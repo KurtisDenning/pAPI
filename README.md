@@ -1,6 +1,4 @@
-# pAPI
-
-## The Public API formatter that nobody asked for!
+# pAPI - The Public API formatter that nobody asked for!
 
 ### Todo
 - Teach people about README
