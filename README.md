@@ -2,6 +2,7 @@
 
 ### Todo
 - Teach people about README
+- Teach people about Github tokens
 - Teach people about git init
 - Teach people about git cloning+branching
 - Teach people about git adding+committing
