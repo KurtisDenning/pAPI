@@ -7,6 +7,6 @@ import (
 
 func main() {
 	r := gin.Default()
-	routes.EnableAllRoutes(r)
+	routes.EnableRoutes(r)
 	r.Run() // listen and serve on 0.0.0.0:8080
 }

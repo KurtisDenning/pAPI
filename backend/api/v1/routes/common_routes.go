@@ -1,22 +1,15 @@
 package routes
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"github.com/oliverschweikert/pAPI/backend/api/v1/controllers"
 )
 
 var router *gin.Engine
 
-func EnableAllRoutes(r *gin.Engine) {
+func EnableRoutes(r *gin.Engine) {
 	router = r
+	router.GET("/", controllers.Index)
 	enableCategoryRoutes()
 	enableApiDataRoutes()
-	enableHomeRoute()
-}
-
-func enableHomeRoute() {
-	router.GET("/", func(ctx *gin.Context) {
-		ctx.String(http.StatusOK, "Currently two API endpoints:\n/api/v1/categories\n/api/v1/apidata")
-	})
 }
