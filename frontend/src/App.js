@@ -4,6 +4,7 @@ import Nav from "./Components/Nav";
 import Header from "./Components/Header";
 import Categories from "./Components/Categories";
 import APIs from "./Components/APIs";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Categories />
       <Divider />
       <APIs />
+      <Footer />
     </ChakraProvider>
   );
 }
