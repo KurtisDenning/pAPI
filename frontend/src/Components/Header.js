@@ -4,7 +4,7 @@ import React from "react";
 const Header = () => {
   return (
     <>
-      <Box h={"92vh"}>
+      <Box h={"92vh"} mx={50}>
         <Flex h={"80%"} alignItems={"center"} justifyContent={"center"}>
           <VStack spacing={10}>
             <Heading as={"h1"} size={"3xl"}>
