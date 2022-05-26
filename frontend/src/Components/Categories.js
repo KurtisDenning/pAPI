@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryCards from "./CategoryCards";
-import Data from "../Dummy-Json/Data";
+import Data from "../Dummy-Json/Categories-data";
 import { Center, Heading, Text, Box } from "@chakra-ui/react";
 
 const categoryCards = Data.map((item) => (
@@ -18,7 +18,6 @@ const Categories = () => {
       <Text mt={2} mb={"80px"} color={"gray"}>
         Pick a category & start exploring!
       </Text>
-
       {categoryCards}
     </Box>
   );
