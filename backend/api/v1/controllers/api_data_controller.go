@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/oliverschweikert/pAPI/backend/api/v1/services"
 )
 
 func CreateAPIData(ctx *gin.Context) {
@@ -11,8 +12,11 @@ func CreateAPIData(ctx *gin.Context) {
 	// createdAPIData := services.CreateAPIData()
 }
 func GetAPIDatas(ctx *gin.Context) {
-	ctx.String(http.StatusOK, "GET : All API Data Values")
-	// allAPIData := services.GetAPIDatas()
+	// ctx.String(http.StatusOK, "GET : All API Data Values")
+	allAPIData := services.GetAPIDatas()
+	for _, apiData := range allAPIData {
+		ctx.String(http.StatusOK, "%v\n\n", apiData)
+	}
 }
 func GetAPIData(ctx *gin.Context) {
 	ctx.String(http.StatusOK, "GET : API Data Value %v", ctx.Param("id"))

@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/oliverschweikert/pAPI/backend/api/v1/services"
 )
 
 func CreateCategory(ctx *gin.Context) {
@@ -11,8 +12,10 @@ func CreateCategory(ctx *gin.Context) {
 	// createdCategory := services.CreateCategory()
 }
 func GetCategories(ctx *gin.Context) {
-	ctx.String(http.StatusOK, "GET : All Categories")
-	// allCategories := services.GetCategories()
+	allCategories := services.GetCategories()
+	for _, category := range allCategories {
+		ctx.String(http.StatusOK, "%v\n\n", category)
+	}
 }
 func GetCategory(ctx *gin.Context) {
 	ctx.String(http.StatusOK, "GET : Category %v", ctx.Param("id"))
