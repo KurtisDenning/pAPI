@@ -1,7 +1,17 @@
-import { Box, Flex, Text, Heading, VStack, Input } from "@chakra-ui/react";
-import React from "react";
+import {
+  Box,
+  Flex,
+  Text,
+  Heading,
+  VStack,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Button,
+} from "@chakra-ui/react";
+import { React } from "react";
 
-const Header = () => {
+const Header = ({ setQuery }) => {
   return (
     <>
       <Box h={"92vh"} mx={50}>
@@ -15,12 +25,28 @@ const Header = () => {
           </VStack>
         </Flex>
         <Flex justifyContent={"center"}>
-          <Input
-            w={"80vw"}
-            isInvalid
-            errorBorderColor="black"
-            placeholder="Search for an API here"
-          ></Input>
+          <InputGroup w={"80vw"}>
+            <Input
+              onChange={(event) => setQuery(event.target.value)}
+              isInvalid
+              errorBorderColor="black"
+              placeholder="Search for an API here"
+            ></Input>
+
+            <InputRightElement>
+              <Box
+                as="button"
+                border="0px"
+                borderRadius="2px"
+                fontSize="14px"
+                fontWeight="semibold"
+                bg="#ffffff"
+                color="black"
+              >
+                <a href="#APIs">GO</a>
+              </Box>
+            </InputRightElement>
+          </InputGroup>
         </Flex>
       </Box>
     </>

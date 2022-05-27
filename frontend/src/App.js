@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { ChakraProvider, Divider } from "@chakra-ui/react";
 import Nav from "./Components/Nav";
 import Header from "./Components/Header";
@@ -7,14 +7,16 @@ import APIs from "./Components/APIs";
 import Footer from "./Components/Footer";
 
 function App() {
+  const [query, setQuery] = useState("");
+
   return (
     <ChakraProvider>
       <Nav />
-      <Header />
+      <Header setQuery={setQuery} />
       <Divider />
       <Categories />
       <Divider />
-      <APIs />
+      <APIs query={query} />
       <Footer />
     </ChakraProvider>
   );
