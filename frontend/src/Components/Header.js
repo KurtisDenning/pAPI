@@ -7,11 +7,11 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Button,
+  Center,
 } from "@chakra-ui/react";
 import { React } from "react";
 
-const Header = ({ setQuery }) => {
+const Header = ({ query, setQuery }) => {
   return (
     <>
       <Box h={"92vh"} mx={50}>
@@ -24,13 +24,14 @@ const Header = ({ setQuery }) => {
             <Text>Find, connect to, & manage thousands of APIs</Text>
           </VStack>
         </Flex>
-        <Flex justifyContent={"center"}>
+        <Center>
           <InputGroup w={"80vw"}>
             <Input
               onChange={(event) => setQuery(event.target.value)}
               isInvalid
               errorBorderColor="black"
               placeholder="Search for an API here"
+              value={query}
             ></Input>
 
             <InputRightElement>
@@ -47,7 +48,7 @@ const Header = ({ setQuery }) => {
               </Box>
             </InputRightElement>
           </InputGroup>
-        </Flex>
+        </Center>{" "}
       </Box>
     </>
   );

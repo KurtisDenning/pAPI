@@ -8,15 +8,16 @@ import Footer from "./Components/Footer";
 
 function App() {
   const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("");
 
   return (
     <ChakraProvider>
       <Nav />
-      <Header setQuery={setQuery} />
+      <Header query={query} setQuery={setQuery} />
       <Divider />
       <Categories />
       <Divider />
-      <APIs query={query} />
+      <APIs query={query} setQuery={setQuery} category={category} />
       <Footer />
     </ChakraProvider>
   );
