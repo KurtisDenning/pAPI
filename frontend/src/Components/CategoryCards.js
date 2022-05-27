@@ -1,9 +1,23 @@
-import React from "react";
+import { React } from "react";
 import { Button } from "@chakra-ui/react";
 
 const CategoryCards = (props) => {
+  function setState() {
+    if (props.category === props.name) {
+      props.setCategory("");
+    } else {
+      props.setCategory(props.name);
+    }
+  }
+
   return (
-    <Button onClick={() => props.setCategory(props.name)} m={2}>
+    <Button
+      m={2}
+      isActive={props.category === props.name}
+      onClick={() => {
+        setState();
+      }}
+    >
       {props.name}
     </Button>
   );

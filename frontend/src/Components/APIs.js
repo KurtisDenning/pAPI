@@ -1,14 +1,7 @@
 import React from "react";
 import APICard from "./APICards";
 import APIData from "../Dummy-Json/API-data";
-import {
-  Center,
-  Heading,
-  Box,
-  Input,
-  InputGroup,
-  InputRightElement,
-} from "@chakra-ui/react";
+import { Center, Heading, Box } from "@chakra-ui/react";
 
 const APIs = ({ query, category }) => {
   let apiCat = APIData.filter((card) => {
@@ -35,7 +28,7 @@ const APIs = ({ query, category }) => {
       <Box m={50}>
         <Center mb={50}>
           <Heading as={"h3"} size={"lg"}>
-            API's {/*need to set state to for what results are being filtered*/}
+            API's
           </Heading>
         </Center>
         {apiCards}

@@ -15,7 +15,7 @@ function App() {
       <Nav />
       <Header query={query} setQuery={setQuery} />
       <Divider />
-      <Categories setCategory={setCategory} />
+      <Categories setCategory={setCategory} category={category} />
       <Divider />
       <APIs query={query} category={category} />
       <Footer />

@@ -3,9 +3,14 @@ import CategoryCards from "./CategoryCards";
 import Data from "../Dummy-Json/Categories-data";
 import { Center, Heading, Text, Box } from "@chakra-ui/react";
 
-const Categories = ({ setCategory }) => {
+const Categories = ({ setCategory, category }) => {
   const categoryCards = Data.map((item) => (
-    <CategoryCards setCategory={setCategory} key={item.id} {...item} />
+    <CategoryCards
+      setCategory={setCategory}
+      category={category}
+      key={item.id}
+      {...item}
+    />
   ));
 
   return (
