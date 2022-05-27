@@ -19,8 +19,8 @@ func GetAPIDatas(ctx *gin.Context) {
 	}
 }
 func GetAPIData(ctx *gin.Context) {
-	ctx.String(http.StatusOK, "GET : API Data Value %v", ctx.Param("id"))
-	// APIData := services.GetAPIData()
+	apiData := services.GetAPIData(ctx.Param("oid"))
+	ctx.String(http.StatusOK, apiData.String())
 }
 func UpdateAPIData(ctx *gin.Context) {
 	ctx.String(http.StatusOK, "PATCH : Update API Data Value %v", ctx.Param("id"))

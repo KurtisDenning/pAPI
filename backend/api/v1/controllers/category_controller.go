@@ -18,8 +18,8 @@ func GetCategories(ctx *gin.Context) {
 	}
 }
 func GetCategory(ctx *gin.Context) {
-	ctx.String(http.StatusOK, "GET : Category %v", ctx.Param("id"))
-	// category := services.GetCategory()
+	category := services.GetCategory(ctx.Param("oid"))
+	ctx.String(http.StatusOK, category.String())
 }
 func UpdateCategory(ctx *gin.Context) {
 	ctx.String(http.StatusOK, "PATCH : Update Category %v", ctx.Param("id"))

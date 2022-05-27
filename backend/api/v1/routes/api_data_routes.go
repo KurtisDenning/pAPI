@@ -9,8 +9,8 @@ func enableApiDataRoutes() {
 	{
 		apiData.POST("/apidata", controllers.CreateAPIData)
 		apiData.GET("/apidata", controllers.GetAPIDatas)
-		apiData.GET("/apidata/:id", controllers.GetAPIData)
-		apiData.PATCH("/apidata/:id", controllers.UpdateAPIData)
-		apiData.DELETE("/apidata/:id", controllers.DeleteAPIData)
+		apiData.GET("/apidata/:oid", controllers.GetAPIData)
+		apiData.PATCH("/apidata/:oid", controllers.UpdateAPIData)
+		apiData.DELETE("/apidata/:oid", controllers.DeleteAPIData)
 	}
 }

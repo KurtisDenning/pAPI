@@ -9,8 +9,8 @@ func enableCategoryRoutes() {
 	{
 		categories.POST("/categories", controllers.CreateCategory)
 		categories.GET("/categories", controllers.GetCategories)
-		categories.GET("/categories/:id", controllers.GetCategory)
-		categories.PATCH("/categories/:id", controllers.UpdateCategory)
-		categories.DELETE("/categories/:id", controllers.DeleteCategory)
+		categories.GET("/categories/:oid", controllers.GetCategory)
+		categories.PATCH("/categories/:oid", controllers.UpdateCategory)
+		categories.DELETE("/categories/:oid", controllers.DeleteCategory)
 	}
 }
