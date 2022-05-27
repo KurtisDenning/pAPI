@@ -15,9 +15,9 @@ function App() {
       <Nav />
       <Header query={query} setQuery={setQuery} />
       <Divider />
-      <Categories />
+      <Categories setCategory={setCategory} />
       <Divider />
-      <APIs query={query} setQuery={setQuery} category={category} />
+      <APIs query={query} category={category} />
       <Footer />
     </ChakraProvider>
   );
