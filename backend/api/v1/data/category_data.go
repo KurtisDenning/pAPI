@@ -8,26 +8,27 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func GetCategories() []bson.Raw {
+func GetCategories() []bson.M {
 	client, ctx, cancel, err := connect("mongodb+srv://db_admin:Disobey4-Reflux-Crying@apidata.ino8ejr.mongodb.net/?retryWrites=true&w=majority")
 	if err != nil {
 		log.Fatal(err)
-		data, _ := bson.Marshal(bson.M{"msg": "Cannot connect to MongoDB", "err": fmt.Sprintf("%v", err)})
-		return []bson.Raw{bson.Raw(data)}
 	}
 	defer close(client, ctx, cancel)
 
 	categories, err := client.Database("papi_db").Collection("categories").Find(ctx, bson.D{})
 	if err != nil {
 		log.Fatal(err)
-		data, _ := bson.Marshal(bson.M{"msg": "Cannot find categories collection in pAPI database", "err": fmt.Sprintf("%v", err)})
-		return []bson.Raw{bson.Raw(data)}
 	}
-	var output []bson.Raw
+	var docs []bson.M
 	for categories.Next(ctx) {
-		output = append(output, categories.Current)
+		var doc bson.M
+		err := categories.Decode(&doc)
+		if err != nil {
+			fmt.Println(err)
+		}
+		docs = append(docs, doc)
 	}
-	return output
+	return docs
 }
 
 func GetCategory(oid primitive.ObjectID) bson.Raw {

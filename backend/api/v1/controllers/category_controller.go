@@ -13,9 +13,7 @@ func CreateCategory(ctx *gin.Context) {
 }
 func GetCategories(ctx *gin.Context) {
 	allCategories := services.GetCategories()
-	for _, category := range allCategories {
-		ctx.String(http.StatusOK, "%v\n\n", category)
-	}
+	ctx.JSON(http.StatusOK, allCategories)
 }
 func GetCategory(ctx *gin.Context) {
 	category := services.GetCategory(ctx.Param("oid"))

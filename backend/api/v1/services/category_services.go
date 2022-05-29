@@ -10,8 +10,10 @@ import (
 
 func CreateCategory() {
 }
-func GetCategories() []bson.Raw {
-	return data.GetCategories()
+func GetCategories() []bson.M {
+	bsonData := data.GetCategories()
+	fmt.Println(bsonData)
+	return bsonData
 }
 func GetCategory(oid string) bson.Raw {
 	id, err := primitive.ObjectIDFromHex(oid)
