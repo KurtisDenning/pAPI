@@ -11,22 +11,22 @@ const APICard = (props) => {
             {props.name}
           </ListItem>
 
-          <ListItem ml={5} mt={5}>
+          <ListItem mt={5}>
             <b>Data 1: </b>
             {props.data1}
           </ListItem>
 
-          <ListItem ml={5}>
+          <ListItem>
             <b>Data 2: </b>
             {props.data2}
           </ListItem>
 
-          <ListItem ml={5}>
+          <ListItem>
             <b>Data 3: </b>
             {props.data3}
           </ListItem>
 
-          <ListItem ml={5}>
+          <ListItem>
             <b>Data 4: </b>
             {props.data4}
           </ListItem>

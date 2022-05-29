@@ -3,22 +3,23 @@ import { Button } from "@chakra-ui/react";
 
 const CategoryCards = (props) => {
   function setState() {
-    if (props.category === props.name) {
+    if (props.category === props.shortDesc) {
       props.setCategory("");
     } else {
-      props.setCategory(props.name);
+      props.setCategory(props.shortDesc);
     }
   }
 
   return (
     <Button
-      m={2}
-      isActive={props.category === props.name}
+      mr={[6, 9, 12]}
+      mb={[6, 9, 12]}
+      isActive={props.category === props.shortDesc}
       onClick={() => {
         setState();
       }}
     >
-      {props.name}
+      {props.shortDesc}
     </Button>
   );
 };

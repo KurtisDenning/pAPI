@@ -25,7 +25,7 @@ const Header = ({ query, setQuery }) => {
           </VStack>
         </Flex>
         <Center>
-          <InputGroup w={"80vw"}>
+          <InputGroup w={["80vw", "60vw", "40vw"]}>
             <Input
               onChange={(event) => setQuery(event.target.value)}
               isInvalid
