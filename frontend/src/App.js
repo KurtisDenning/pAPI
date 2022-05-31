@@ -8,7 +8,7 @@ import Footer from "./Components/Footer";
 
 function App() {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(null);
 
   return (
     <ChakraProvider>

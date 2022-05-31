@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     name: "Persian",
-    category: "Data",
+    categories: ["628e0d6a4e3f4f6c8d644a96", "628e0d4a4e3f4f6c8d644a95"],
     data1: "Cough Gate keepers of hell catasstrophe, loves cheeseburgers.",
     data2: "Prow?? ew dog you drink from the toilet",
     data3:
@@ -13,7 +13,7 @@ export default [
   {
     id: 2,
     name: "Maine Coon",
-    category: "Apples",
+    categories: ["628e0d6a4e3f4f6c8d644a96"],
     data1: "Cough Gate keepers of hell catasstrophe, loves cheeseburgers.",
     data2: "Prow?? ew dog you drink from the toilet",
     data3:
@@ -24,7 +24,7 @@ export default [
   {
     id: 3,
     name: "Ragdoll",
-    category: "Data",
+    categories: ["628e0d6a4e3f4f6c8d644a96"],
     data1: "Cough Gate keepers of hell catasstrophe, loves cheeseburgers.",
     data2: "Prow?? ew dog you drink from the toilet",
     data3:
@@ -35,7 +35,7 @@ export default [
   {
     id: 4,
     name: "Scottish Fold",
-    category: "Kiwi",
+    categories: ["628e0d4a4e3f4f6c8d644a95"],
     data1: "Cough Gate keepers of hell catasstrophe, loves cheeseburgers.",
     data2: "Prow?? ew dog you drink from the toilet",
     data3:
@@ -46,7 +46,7 @@ export default [
   {
     id: 5,
     name: "Sphynx",
-    category: "Data",
+    categories: ["628e0d4a4e3f4f6c8d644a95"],
     data1: "Cough Gate keepers of hell catasstrophe, loves cheeseburgers.",
     data2: "Prow?? ew dog you drink from the toilet",
     data3:
@@ -57,7 +57,7 @@ export default [
   {
     id: 6,
     name: "Bengal",
-    category: "Sports",
+    categories: ["628e0d4a4e3f4f6c8d644a95"],
     data1: "Cough Gate keepers of hell catasstrophe, loves cheeseburgers.",
     data2: "Prow?? ew dog you drink from the toilet",
     data3:

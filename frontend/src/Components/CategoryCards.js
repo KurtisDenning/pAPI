@@ -1,12 +1,12 @@
 import { React } from "react";
 import { Button } from "@chakra-ui/react";
 
-const CategoryCards = (props) => {
+const CategoryCards = ({ setCategory, category, item }) => {
   function setState() {
-    if (props.category === props.shortDesc) {
-      props.setCategory("");
+    if (category === item) {
+      setCategory(null);
     } else {
-      props.setCategory(props.shortDesc);
+      setCategory(item);
     }
   }
 
@@ -14,12 +14,12 @@ const CategoryCards = (props) => {
     <Button
       mr={[6, 9, 12]}
       mb={[6, 9, 12]}
-      isActive={props.category === props.shortDesc}
+      isActive={category === item}
       onClick={() => {
         setState();
       }}
     >
-      {props.shortDesc}
+      {item.shortDesc}
     </Button>
   );
 };

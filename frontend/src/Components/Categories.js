@@ -16,7 +16,7 @@ const Categories = ({ setCategory, category }) => {
       setCategory={setCategory}
       category={category}
       key={item._id}
-      {...item}
+      item={item}
     />
   ));
 

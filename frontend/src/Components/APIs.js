@@ -4,11 +4,12 @@ import APIData from "../Dummy-Json/API-data";
 import { Heading, Box } from "@chakra-ui/react";
 
 const APIs = ({ query, category }) => {
-  let apiCat = APIData.filter((card) => {
-    if (category === "") {
-      return card;
-    } else if (card.category.toLowerCase() === category.toLowerCase()) {
-      return card;
+  console.log(category);
+  let apiCat = APIData.filter((apiData) => {
+    if (category === null) {
+      return apiData;
+    } else if (apiData.categories.includes(category._id)) {
+      return apiData;
     } else {
       return null;
     }
