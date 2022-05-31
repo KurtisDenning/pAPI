@@ -1,8 +1,10 @@
 package entity_models
 
 import (
+	"encoding/json"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -26,4 +28,29 @@ type APIData struct {
 	Categories   []string           `json:"categories" bson:"categories"`
 	Base         string             `json:"base" bson:"base"`
 	Requests     []Request          `json:"requests" bson:"requests"`
+}
+
+// Given a bson.M primitive from the apiData collected in MongoDB, make a new APIData struct
+func NewAPIDataStruct(bsonData bson.M) (APIData, error) {
+	var data APIData
+	jsonData, err := bson.MarshalExtJSON(bsonData, false, false)
+	if err != nil {
+		return APIData{}, err
+	}
+	err = json.Unmarshal(jsonData, &data)
+	if err != nil {
+		return data, err
+	}
+	return data, nil
+}
+
+func (a APIData) GetURL(requestIndexes []int) string {
+	url := a.Base
+	currentRequests := a.Requests
+	for _, r := range requestIndexes {
+		currentRequest := currentRequests[r]
+		url += currentRequest.Request
+		currentRequests = currentRequests[r].Requests
+	}
+	return url
 }

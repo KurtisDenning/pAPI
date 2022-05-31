@@ -35,6 +35,7 @@ func GetAPIDatas() []bson.M {
 	}
 	return docs
 }
+
 func GetAllAPIDatas() []bson.M {
 	client, ctx, cancel, err := connect("mongodb+srv://db_admin:Disobey4-Reflux-Crying@apidata.ino8ejr.mongodb.net/?retryWrites=true&w=majority")
 	if err != nil {
@@ -48,6 +49,7 @@ func GetAllAPIDatas() []bson.M {
 		fmt.Println("Can't get API data from database")
 		return []bson.M{}
 	}
+
 	var docs []bson.M
 	for apiData.Next(ctx) {
 		var doc bson.M
@@ -60,6 +62,7 @@ func GetAllAPIDatas() []bson.M {
 	}
 	return docs
 }
+
 func GetAPIData(oid primitive.ObjectID) bson.M {
 	client, ctx, cancel, err := connect("mongodb+srv://db_admin:Disobey4-Reflux-Crying@apidata.ino8ejr.mongodb.net/?retryWrites=true&w=majority")
 	if err != nil {
