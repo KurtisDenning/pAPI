@@ -1,10 +1,18 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import APICard from "./APICards";
-import APIData from "../Dummy-Json/API-data";
 import { Heading, Box } from "@chakra-ui/react";
 
 const APIs = ({ query, category }) => {
-  console.log(category);
+  const [APIData, setAPIData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://papi-project.herokuapp.com/api/v1/apidata")
+      .then((res) => res.json())
+      .then((data) => setAPIData(data));
+  }, []);
+
+  console.log(APIData);
+
   let apiCat = APIData.filter((apiData) => {
     if (category === null) {
       return apiData;
@@ -25,7 +33,7 @@ const APIs = ({ query, category }) => {
         return null;
       }
     })
-    .map((item) => <APICard key={item.id} {...item} />);
+    .map((item) => <APICard key={item._id} {...item} />);
 
   return (
     <Box>
