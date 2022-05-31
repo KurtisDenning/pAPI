@@ -2,45 +2,47 @@ package data
 
 import (
 	"fmt"
-	"log"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func GetAPIDatas() []bson.Raw {
+func GetAPIDatas() []bson.M {
 	client, ctx, cancel, err := connect("mongodb+srv://db_admin:Disobey4-Reflux-Crying@apidata.ino8ejr.mongodb.net/?retryWrites=true&w=majority")
 	if err != nil {
-		log.Fatal(err)
-		data, _ := bson.Marshal(bson.M{"msg": "Cannot connect to MongoDB", "err": fmt.Sprintf("%v", err)})
-		return []bson.Raw{bson.Raw(data)}
+		fmt.Println("Can't connect to MongoDB")
+		return []bson.M{}
 	}
 	defer close(client, ctx, cancel)
 
 	apiData, err := client.Database("papi_db").Collection("apiData").Find(ctx, bson.D{})
 	if err != nil {
-		log.Fatal(err)
-		data, _ := bson.Marshal(bson.M{"msg": "Cannot find APIData collection in pAPI database", "err": fmt.Sprintf("%v", err)})
-		return []bson.Raw{bson.Raw(data)}
+		fmt.Println("Can't get API data from database")
+		return []bson.M{}
 	}
-	var output []bson.Raw
+	var docs []bson.M
 	for apiData.Next(ctx) {
-		output = append(output, apiData.Current)
+		var doc bson.M
+		err = apiData.Decode(&doc)
+		if err != nil {
+			fmt.Println("Can't convert to bson.M")
+			continue
+		}
+		docs = append(docs, doc)
 	}
-	return output
+	return docs
 }
-func GetAPIData(oid primitive.ObjectID) bson.Raw {
+func GetAPIData(oid primitive.ObjectID) bson.M {
 	client, ctx, cancel, err := connect("mongodb+srv://db_admin:Disobey4-Reflux-Crying@apidata.ino8ejr.mongodb.net/?retryWrites=true&w=majority")
 	if err != nil {
-		log.Fatal(err)
-		data, _ := bson.Marshal(bson.M{"msg": "Cannot connect to MongoDB", "err": fmt.Sprintf("%v", err)})
-		return bson.Raw(data)
+		fmt.Println("Can't connect to MongoDB")
+		return bson.M{}
 	}
 	defer close(client, ctx, cancel)
 
 	category := client.Database("papi_db").Collection("apiData").FindOne(ctx, bson.M{"_id": oid})
-	var out bson.Raw
-	category.Decode(&out)
-	fmt.Println(out)
-	return out
+	var doc bson.M
+	category.Decode(&doc)
+	fmt.Println(doc)
+	return doc
 }

@@ -12,12 +12,10 @@ func CreateCategory(ctx *gin.Context) {
 	// createdCategory := services.CreateCategory()
 }
 func GetCategories(ctx *gin.Context) {
-	allCategories := services.GetCategories()
-	ctx.JSON(http.StatusOK, allCategories)
+	ctx.JSON(http.StatusOK, services.GetCategories())
 }
 func GetCategory(ctx *gin.Context) {
-	category := services.GetCategory(ctx.Param("oid"))
-	ctx.String(http.StatusOK, category.String())
+	ctx.JSON(http.StatusOK, services.GetCategory(ctx.Param("oid")))
 }
 func UpdateCategory(ctx *gin.Context) {
 	ctx.String(http.StatusOK, "PATCH : Update Category %v", ctx.Param("id"))

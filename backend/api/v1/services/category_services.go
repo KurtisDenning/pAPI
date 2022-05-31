@@ -15,11 +15,11 @@ func GetCategories() []bson.M {
 	fmt.Println(bsonData)
 	return bsonData
 }
-func GetCategory(oid string) bson.Raw {
+func GetCategory(oid string) bson.M {
 	id, err := primitive.ObjectIDFromHex(oid)
 	if err != nil {
 		fmt.Println("The provided hex value is not a valid object ID")
-		return bson.Raw{}
+		return bson.M{"Message": "The provided hex value is not a valid object ID"}
 	}
 	return data.GetCategory(id)
 }

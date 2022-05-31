@@ -10,14 +10,14 @@ import (
 
 func CreateAPIData() {
 }
-func GetAPIDatas() []bson.Raw {
+func GetAPIDatas() []bson.M {
 	return data.GetAPIDatas()
 }
-func GetAPIData(oid string) bson.Raw {
+func GetAPIData(oid string) bson.M {
 	id, err := primitive.ObjectIDFromHex(oid)
 	if err != nil {
 		fmt.Println("The provided hex value is not a valid object ID")
-		return bson.Raw{}
+		return bson.M{"Message": "The provided hex value is not a valid object ID"}
 	}
 	return data.GetAPIData(id)
 }

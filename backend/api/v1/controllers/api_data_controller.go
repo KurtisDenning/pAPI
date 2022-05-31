@@ -12,15 +12,10 @@ func CreateAPIData(ctx *gin.Context) {
 	// createdAPIData := services.CreateAPIData()
 }
 func GetAPIDatas(ctx *gin.Context) {
-	// ctx.String(http.StatusOK, "GET : All API Data Values")
-	allAPIData := services.GetAPIDatas()
-	for _, apiData := range allAPIData {
-		ctx.String(http.StatusOK, "%v\n\n", apiData)
-	}
+	ctx.JSON(http.StatusOK, services.GetAPIDatas())
 }
 func GetAPIData(ctx *gin.Context) {
-	apiData := services.GetAPIData(ctx.Param("oid"))
-	ctx.String(http.StatusOK, apiData.String())
+	ctx.JSON(http.StatusOK, services.GetAPIData(ctx.Param("oid")))
 }
 func UpdateAPIData(ctx *gin.Context) {
 	ctx.String(http.StatusOK, "PATCH : Update API Data Value %v", ctx.Param("id"))
