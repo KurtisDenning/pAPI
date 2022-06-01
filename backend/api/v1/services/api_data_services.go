@@ -2,6 +2,8 @@ package services
 
 import (
 	"fmt"
+	"io/ioutil"
+	"net/http"
 
 	"github.com/oliverschweikert/pAPI/backend/api/v1/data"
 	"github.com/oliverschweikert/pAPI/backend/api/v1/entity_models"
@@ -30,17 +32,35 @@ func UpdateAPIData(oid string) {
 func RefreshAPIData(oid string, requestIndexes []int) bson.M {
 	id, err := primitive.ObjectIDFromHex(oid)
 	if err != nil {
-		return bson.M{"Message": "Invalid Object ID"}
-	} else {
-		apiToUpdate := data.GetAPIData(id)
-		apiModel, err := entity_models.NewAPIDataStruct(apiToUpdate)
-		if err != nil {
-			fmt.Println(err)
-		} else {
-			fmt.Println(apiModel.GetURL(requestIndexes))
-		}
-		return apiToUpdate
+		return bson.M{"Message": err}
 	}
+	apiToUpdate := data.GetAPIData(id)
+	apiModel, err := entity_models.NewAPIDataStruct(apiToUpdate)
+	if err != nil {
+		return bson.M{"Message": err}
+	}
+	url, req := apiModel.GetURL(requestIndexes)
+	resp, err := http.Get(url)
+	if err != nil {
+		return bson.M{"Message": err}
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return bson.M{"Message": err}
+	}
+	err = req.UpdateResponse(body)
+	if err != nil {
+		return bson.M{"Message": err}
+	}
+	binData, err := bson.Marshal(bson.M{"requests": apiModel.Requests})
+	if err != nil {
+		return bson.M{"Message": err}
+	}
+	var bsonData bson.M
+	bson.Unmarshal(binData, &bsonData)
+	bsonResponse := data.UpdateAPIResponse(id, bsonData)
+	return bsonResponse
+
 }
 func DeleteAPIData() {
 }

@@ -11,7 +11,6 @@ func enableApiDataRoutes() {
 		apiData.GET("/apidata", controllers.GetAPIDatas)
 		apiData.GET("/apidata/:oid", controllers.GetAPIData)
 		apiData.PATCH("/apidata/:oid", controllers.UpdateAPIData)
-		apiData.GET("/apidata/refresh/:oid", controllers.RefreshAPIData)
 		apiData.DELETE("/apidata/:oid", controllers.DeleteAPIData)
 	}
 }

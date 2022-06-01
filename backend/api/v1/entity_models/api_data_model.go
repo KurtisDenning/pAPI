@@ -2,6 +2,7 @@ package entity_models
 
 import (
 	"encoding/json"
+	"reflect"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -10,7 +11,7 @@ import (
 
 type Request struct {
 	Request    string                 `json:"request" bson:"request"`
-	Requests   []Request              `json:"requests,omitempty" bson:"requests,omitempty"`
+	Requests   []*Request             `json:"requests,omitempty" bson:"requests,omitempty"`
 	Response   map[string]interface{} `json:"response,omitempty" bson:"response,omitempty"`
 	LastUpdate time.Time              `json:"lastUpdate,omitempty" bson:"lastUpdate,omitmpty"`
 }
@@ -27,30 +28,49 @@ type APIData struct {
 	TotalCount   int                `json:"totalCount" bson:"totalCount"`
 	Categories   []string           `json:"categories" bson:"categories"`
 	Base         string             `json:"base" bson:"base"`
-	Requests     []Request          `json:"requests" bson:"requests"`
+	Requests     []*Request         `json:"requests" bson:"requests"`
 }
 
 // Given a bson.M primitive from the apiData collected in MongoDB, make a new APIData struct
 func NewAPIDataStruct(bsonData bson.M) (APIData, error) {
 	var data APIData
-	jsonData, err := bson.MarshalExtJSON(bsonData, false, false)
+	jsonData, err := bson.Marshal(bsonData)
 	if err != nil {
 		return APIData{}, err
 	}
-	err = json.Unmarshal(jsonData, &data)
+	err = bson.Unmarshal(jsonData, &data)
 	if err != nil {
 		return data, err
 	}
 	return data, nil
 }
 
-func (a APIData) GetURL(requestIndexes []int) string {
+func (a APIData) GetURL(requestIndexes []int) (string, *Request) {
 	url := a.Base
 	currentRequests := a.Requests
-	for _, r := range requestIndexes {
-		currentRequest := currentRequests[r]
+	currentRequest := currentRequests[requestIndexes[0]]
+	url += currentRequest.Request
+	for r := 1; r < len(requestIndexes); r++ {
+		currentRequests = currentRequest.Requests
+		currentRequest = currentRequests[requestIndexes[r]]
 		url += currentRequest.Request
-		currentRequests = currentRequests[r].Requests
 	}
-	return url
+	return url, currentRequest
+}
+
+func (r *Request) UpdateResponse(body []byte) error {
+	if time.Since(r.LastUpdate).Hours() > 24 {
+		var res any
+		err := json.Unmarshal(body, &res)
+		if err != nil {
+			return err
+		}
+		if reflect.TypeOf(res).Kind() != reflect.Map {
+			r.Response = bson.M{"data": res}
+		} else {
+			r.Response = res.(map[string]interface{})
+		}
+		r.LastUpdate = time.Now()
+	}
+	return nil
 }

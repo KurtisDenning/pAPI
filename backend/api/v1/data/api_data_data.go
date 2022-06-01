@@ -71,9 +71,28 @@ func GetAPIData(oid primitive.ObjectID) bson.M {
 	}
 	defer close(client, ctx, cancel)
 
-	category := client.Database("papi_db").Collection("apiData").FindOne(ctx, bson.M{"_id": oid})
+	apiData := client.Database("papi_db").Collection("apiData").FindOne(ctx, bson.M{"_id": oid})
 	var doc bson.M
-	category.Decode(&doc)
-	fmt.Println(doc)
+	apiData.Decode(&doc)
+	return doc
+}
+
+func UpdateAPIResponse(oid primitive.ObjectID, requests bson.M) bson.M {
+	client, ctx, cancel, err := connect("mongodb+srv://db_admin:Disobey4-Reflux-Crying@apidata.ino8ejr.mongodb.net/?retryWrites=true&w=majority")
+	if err != nil {
+		return bson.M{"Message": err}
+	}
+	defer close(client, ctx, cancel)
+	update := bson.M{"$set": requests}
+	result, err := client.Database("papi_db").Collection("apiData").UpdateOne(ctx, bson.M{"_id": oid}, update)
+	if err != nil {
+		return bson.M{"Message": err}
+	}
+	if result.ModifiedCount == 0 {
+		return bson.M{"Message": "OID didn't match any database entries"}
+	}
+	apiData := client.Database("papi_db").Collection("apiData").FindOne(ctx, bson.M{"_id": oid})
+	var doc bson.M
+	apiData.Decode(&doc)
 	return doc
 }
