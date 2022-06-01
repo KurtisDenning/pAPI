@@ -1,0 +1,54 @@
+{
+    "_id": {
+        "$oid": "6295e1053652deb9e3c06d0f"
+    },
+    "title": "Cataas",
+    "description": "Cat as a Service",
+    "externalURL": "https://cataas.com/",
+    "dailyCount": {
+        "$numberInt": "0"
+    },
+    "weeklyCount": {
+        "$numberInt": "0"
+    },
+    "monthlyCount": {
+        "$numberInt": "0"
+    },
+    "yearlyCount": {
+        "$numberInt": "0"
+    },
+    "totalCount": {
+        "$numberInt": "0"
+    },
+    "categories": [
+        "6295da283652deb9e3c06d0e",
+        "628e0d6a4e3f4f6c8d644a96"
+    ],
+    "base": "https://cataas.com/",
+    "requests": [
+        {
+            "request": "cat/",
+            "requests": [
+                {
+                    "request": "gif/",
+                    "requests": [
+                        {
+                            "request": "says",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        }
+                    ],
+                    "response": {},
+                    "lastUpdate": "2022-05-25T11:23:00Z"
+                },
+                {
+                    "request": "says",
+                    "response": {},
+                    "lastUpdate": "2022-05-25T11:23:00Z"
+                }
+            ],
+            "response": {},
+            "lastUpdate": "2022-05-25T11:23:00Z"
+        }
+    ]
+}
