@@ -1,14 +1,19 @@
 import { React, useState, useEffect } from "react";
 import CategoryCards from "./CategoryCards";
+import CategoriesDevJSON from "../DevData/Categories.json";
 import { Heading, Text, Box } from "@chakra-ui/react";
 
-const Categories = ({ setCategory, category }) => {
+const Categories = ({ setCategory, category, isDevelopment }) => {
   const [categoryData, setCategoryData] = useState([]);
 
   useEffect(() => {
-    fetch("https://papi-project.herokuapp.com/api/v1/categories")
-      .then((res) => res.json())
-      .then((data) => setCategoryData(data));
+    if (isDevelopment === false) {
+      fetch("https://papi-project.herokuapp.com/api/v1/categories")
+        .then((res) => res.json())
+        .then((data) => setCategoryData(data));
+    } else {
+      setCategoryData(CategoriesDevJSON);
+    }
   }, []);
 
   const categoryCards = categoryData.map((item) => (

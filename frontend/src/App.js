@@ -7,6 +7,8 @@ import APIs from "./Components/APIs";
 import Footer from "./Components/Footer";
 
 function App() {
+  const isDevelopment = true;
+
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState(null);
 
@@ -15,9 +17,13 @@ function App() {
       <Nav />
       <Header query={query} setQuery={setQuery} />
       <Divider />
-      <Categories setCategory={setCategory} category={category} />
+      <Categories
+        setCategory={setCategory}
+        category={category}
+        isDevelopment={isDevelopment}
+      />
       <Divider />
-      <APIs query={query} category={category} />
+      <APIs query={query} category={category} isDevelopment={isDevelopment} />
       <Footer />
     </ChakraProvider>
   );

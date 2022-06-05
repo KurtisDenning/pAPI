@@ -1,17 +1,20 @@
 import { React, useEffect, useState } from "react";
 import APICard from "./APICards";
+import APIDevJSON from "../DevData/APIs.json";
 import { Heading, Box } from "@chakra-ui/react";
 
-const APIs = ({ query, category }) => {
+const APIs = ({ query, category, isDevelopment }) => {
   const [APIData, setAPIData] = useState([]);
 
   useEffect(() => {
-    fetch("https://papi-project.herokuapp.com/api/v1/apidata")
-      .then((res) => res.json())
-      .then((data) => setAPIData(data));
+    if (isDevelopment === false) {
+      fetch("https://papi-project.herokuapp.com/api/v1/apidata")
+        .then((res) => res.json())
+        .then((data) => setAPIData(data));
+    } else {
+      setAPIData(APIDevJSON);
+    }
   }, []);
-
-  console.log(APIData);
 
   let apiCat = APIData.filter((apiData) => {
     if (category === null) {

@@ -1,0 +1,26 @@
+[
+    {
+        "_id": "628e0d4a4e3f4f6c8d644a95",
+        "longDesc": "Are you feeling kawaii?",
+        "name": "anime",
+        "shortDesc": "Anime"
+    },
+    {
+        "_id": "628e0d6a4e3f4f6c8d644a96",
+        "longDesc": "A picture is worth 1000 words",
+        "name": "image",
+        "shortDesc": "Image"
+    },
+    {
+        "_id": "6295ca8b3652deb9e3c06d0a",
+        "longDesc": "You dirty boy",
+        "name": "nsfw",
+        "shortDesc": "NSFW"
+    },
+    {
+        "_id": "6295da283652deb9e3c06d0e",
+        "longDesc": "Scales, fur, and feathers :)",
+        "name": "animals",
+        "shortDesc": "Animals"
+    }
+]
