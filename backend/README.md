@@ -7,6 +7,9 @@
 
 ## Todo
 
-- [ ] Connect MongoDB to data layer
-- [ ] Program services to do something with the data layer (already connected to the controllers)
+- [x] Connect MongoDB to data layer
+- [x] Program services to do something with the data layer (already connected to the controllers)
 - [x] Go to bed
+- [ ] Add admin panel for easy data manipulation from heroku
+- [ ] Add authentication/authorization for admin panel access
+- [ ] Add security for backend
