@@ -2,9 +2,12 @@ import { React, useEffect, useState } from "react";
 import APICard from "./APICards";
 import APIDevJSON from "../DevData/APIs.json";
 import { Heading, Box } from "@chakra-ui/react";
+import Pagination from "./Pagination";
 
 const APIs = ({ query, category, isDevelopment }) => {
   const [APIData, setAPIData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(3);
 
   useEffect(() => {
     if (isDevelopment === false) {
@@ -38,14 +41,23 @@ const APIs = ({ query, category, isDevelopment }) => {
     })
     .map((item) => <APICard key={item._id} {...item} />);
 
+  //Get current posts
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = apiCards.slice(indexOfFirstItem, indexOfLastItem);
+
+  //Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber)
+
   return (
     <Box>
-      <Box id={"APIs"} h={1}></Box> {/*Remove for scooter*/}
+      <Box id={"APIs"} h={1}></Box>
       <Box my={50} mx={[50, 100, 150]}>
         <Heading as={"h3"} size={"lg"} mb={"50px"}>
           API's
         </Heading>
-        {apiCards}
+        {currentItems}
+        <Pagination itemsPerPage={itemsPerPage} totalPosts={APIData.length} paginate={paginate} />
       </Box>
     </Box>
   );
