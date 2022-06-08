@@ -8,10 +8,8 @@ const APICard = (props) => {
         <Heading as="h4" size="md">
           Title: {props.title}
         </Heading>
-
         <Text>Description: {props.description}</Text>
       </Box>
-
       <Divider />
     </>
   );
