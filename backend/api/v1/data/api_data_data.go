@@ -16,7 +16,7 @@ func GetAPIDatas() []bson.M {
 	}
 	defer close(client, ctx, cancel)
 
-	opts := options.Find().SetProjection(bson.D{{Key: "title", Value: 1}, {Key: "description", Value: 1}})
+	opts := options.Find().SetProjection(bson.D{{Key: "title", Value: 1}, {Key: "description", Value: 1}, {Key: "categories", Value: 1}})
 	apiData, err := client.Database("papi_db").Collection("apiData").Find(ctx, bson.D{}, opts)
 	if err != nil {
 		fmt.Println("Can't get API data from database")
