@@ -4,12 +4,19 @@ module github.com/oliverschweikert/pAPI/backend
 go 1.18
 
 require (
+	github.com/didip/tollbooth v4.0.2+incompatible
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-gonic/gin v1.7.7
 	go.mongodb.org/mongo-driver v1.9.1
 )
 
 require (
+	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
+	golang.org/x/time v0.0.0-20220411224347-583f2d630306 // indirect
+)
+
+require (
+	github.com/didip/tollbooth_gin v0.0.0-20170928041415-5752492be505
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
