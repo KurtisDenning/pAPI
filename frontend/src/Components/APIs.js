@@ -30,7 +30,7 @@ const APIs = ({ query, category, isDevelopment }) => {
     .filter((card) => {
       if (query === "") {
         return card;
-      } else if (card.name.toLowerCase().includes(query.toLowerCase())) {
+      } else if (card.title.toLowerCase().includes(query.toLowerCase())) {
         return card;
       } else {
         return null;
