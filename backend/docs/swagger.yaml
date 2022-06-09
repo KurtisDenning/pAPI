@@ -1,0 +1,65 @@
+basePath: /api/v1
+definitions:
+  entity_models.Category:
+    properties:
+      _id:
+        type: string
+      longDesc:
+        type: string
+      name:
+        type: string
+      shortDesc:
+        type: string
+    type: object
+  entity_models.Message:
+    properties:
+      message:
+        type: string
+    type: object
+host: papi-project.herokuapp.com
+info:
+  contact: {}
+  description: A public API that brings together the data from many other API's and
+    makes them publicly accessible.
+  title: pAPI
+  version: "1.0"
+paths:
+  /categories:
+    get:
+      description: Get a list of all categories that are currently stored in the database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            items:
+              $ref: '#/definitions/entity_models.Category'
+            type: array
+      summary: Get all categories
+      tags:
+      - Category
+  /categories/{oid}:
+    get:
+      description: Get a single category from the database
+      parameters:
+      - description: The Object ID (_id) of the category
+        in: path
+        name: oid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: '#/definitions/entity_models.Category'
+        "400":
+          description: Invalid object ID
+          schema:
+            $ref: '#/definitions/entity_models.Message'
+      summary: Get a category
+      tags:
+      - Category
+swagger: "2.0"

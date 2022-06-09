@@ -1,0 +1,98 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "A public API that brings together the data from many other API's and makes them publicly accessible.",
+        "title": "pAPI",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "papi-project.herokuapp.com",
+    "basePath": "/api/v1",
+    "paths": {
+        "/categories": {
+            "get": {
+                "description": "Get a list of all categories that are currently stored in the database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get all categories",
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity_models.Category"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{oid}": {
+            "get": {
+                "description": "Get a single category from the database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get a category",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The Object ID (_id) of the category",
+                        "name": "oid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Category"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid object ID",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "entity_models.Category": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "longDesc": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortDesc": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity_models.Message": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -2,6 +2,7 @@ package services
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/oliverschweikert/pAPI/backend/api/v1/data"
 	"go.mongodb.org/mongo-driver/bson"
@@ -15,13 +16,13 @@ func GetCategories() []bson.M {
 	fmt.Println(bsonData)
 	return bsonData
 }
-func GetCategory(oid string) bson.M {
+func GetCategoryResponse(oid string) (int, bson.M) {
 	id, err := primitive.ObjectIDFromHex(oid)
 	if err != nil {
 		fmt.Println("The provided hex value is not a valid object ID")
-		return bson.M{"Message": "The provided hex value is not a valid object ID"}
+		return http.StatusBadRequest, bson.M{"message": fmt.Sprintf("%v is not a valid object ID", oid)}
 	}
-	return data.GetCategory(id)
+	return http.StatusOK, data.GetCategory(id)
 }
 func UpdateCategory() {
 }
