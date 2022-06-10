@@ -16,6 +16,94 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/apidata": {
+            "get": {
+                "description": "Get a list of all API's that are currently stored in the database, and an overview of their information",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "APIData"
+                ],
+                "summary": "Get all API data",
+                "responses": {
+                    "200": {
+                        "description": "Successful request.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity_models.APIDataOverview"
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too many requests - please only test once every 10 seconds",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/apidata/{oid}": {
+            "get": {
+                "description": "Get complete information about a single API stored in the database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "APIData"
+                ],
+                "summary": "Get single API data",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The Object ID (_id) of the API data",
+                        "name": "oid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The request ID to check for - is recursive in practice",
+                        "name": "requestID",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request. Please note that requests are recursive, and can have many request layers",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.APIData"
+                        }
+                    },
+                    "400": {
+                        "description": "Problem with user request - read message for more details",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    },
+                    "429": {
+                        "description": "Too many requests - please only test once every 10 seconds",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Problem with server processing - read message for more details",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    },
+                    "502": {
+                        "description": "Problem connecting to external API - read message for more details",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    }
+                }
+            }
+        },
         "/categories": {
             "get": {
                 "description": "Get a list of all categories that are currently stored in the database",
@@ -34,6 +122,12 @@ const docTemplate = `{
                             "items": {
                                 "$ref": "#/definitions/entity_models.Category"
                             }
+                        }
+                    },
+                    "429": {
+                        "description": "Too many requests - please only test once every 10 seconds",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
@@ -70,12 +164,85 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/entity_models.Message"
                         }
+                    },
+                    "429": {
+                        "description": "Too many requests - please only test once every 10 seconds",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 }
             }
         }
     },
     "definitions": {
+        "entity_models.APIData": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "base": {
+                    "type": "string"
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "dailyCount": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "externalURL": {
+                    "type": "string"
+                },
+                "monthlyCount": {
+                    "type": "integer"
+                },
+                "requests": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/entity_models.Request"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "totalCount": {
+                    "type": "integer"
+                },
+                "weeklyCount": {
+                    "type": "integer"
+                },
+                "yearlyCount": {
+                    "type": "integer"
+                }
+            }
+        },
+        "entity_models.APIDataOverview": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
         "entity_models.Category": {
             "type": "object",
             "properties": {
@@ -100,6 +267,27 @@ const docTemplate = `{
                     "type": "string"
                 }
             }
+        },
+        "entity_models.Request": {
+            "type": "object",
+            "properties": {
+                "lastUpdate": {
+                    "type": "string"
+                },
+                "request": {
+                    "type": "string"
+                },
+                "requests": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/entity_models.Request"
+                    }
+                },
+                "response": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            }
         }
     }
 }`
@@ -107,7 +295,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "papi-project.herokuapp.com",
+	Host:             "localhost:8080",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
 	Title:            "pAPI",

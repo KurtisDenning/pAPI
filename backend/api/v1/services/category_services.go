@@ -13,7 +13,6 @@ func CreateCategory() {
 }
 func GetCategories() []bson.M {
 	bsonData := data.GetCategories()
-	fmt.Println(bsonData)
 	return bsonData
 }
 func GetCategoryResponse(oid string) (int, bson.M) {

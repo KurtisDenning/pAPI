@@ -2,6 +2,7 @@ package entity_models
 
 import (
 	"encoding/json"
+	"fmt"
 	"reflect"
 	"time"
 
@@ -31,6 +32,13 @@ type APIData struct {
 	Requests     []*Request         `json:"requests" bson:"requests"`
 }
 
+type APIDataOverview struct {
+	Id          primitive.ObjectID `json:"_id" bson:"_id"`
+	Title       string             `json:"title" bson:"title"`
+	Description string             `json:"description" bson:"description"`
+	Categories  []string           `json:"categories" bson:"categories"`
+}
+
 // Given a bson.M primitive from the apiData collected in MongoDB, make a new APIData struct
 func NewAPIDataStruct(bsonData bson.M) (APIData, error) {
 	var data APIData
@@ -45,17 +53,24 @@ func NewAPIDataStruct(bsonData bson.M) (APIData, error) {
 	return data, nil
 }
 
-func (a APIData) GetURL(requestIndexes []int) (string, *Request) {
+func (a APIData) GetURL(requestIndexes []int) (string, *Request, error) {
 	url := a.Base
 	currentRequests := a.Requests
-	currentRequest := currentRequests[requestIndexes[0]]
-	url += currentRequest.Request
-	for r := 1; r < len(requestIndexes); r++ {
-		currentRequests = currentRequest.Requests
-		currentRequest = currentRequests[requestIndexes[r]]
+	if requestIndexes[0] < len(currentRequests) {
+		currentRequest := currentRequests[requestIndexes[0]]
 		url += currentRequest.Request
+		for r := 1; r < len(requestIndexes); r++ {
+			currentRequests = currentRequest.Requests
+			if requestIndexes[r] < len(currentRequests) {
+				currentRequest = currentRequests[requestIndexes[r]]
+				url += currentRequest.Request
+			} else {
+				return "", &Request{}, fmt.Errorf("Request index out of range (Min:0, Max: %v, Had: %v)", len(currentRequests)-1, requestIndexes[0])
+			}
+		}
+		return url, currentRequest, nil
 	}
-	return url, currentRequest
+	return "", &Request{}, fmt.Errorf("Request index out of range (Min:0, Max: %v, Had: %v)", len(currentRequests)-1, requestIndexes[0])
 }
 
 func (r *Request) UpdateResponse(body []byte) error {

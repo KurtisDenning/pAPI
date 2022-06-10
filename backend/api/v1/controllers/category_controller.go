@@ -13,6 +13,7 @@ import (
 // @tags Category
 // @Produce json
 // @Success 200 {array} entity_models.Category "Successful request"
+// @Failure 429 {string} string "Too many requests - please only test once every 10 seconds"
 // @Router /categories [get]
 func GetCategories(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, services.GetCategories())
@@ -26,6 +27,7 @@ func GetCategories(ctx *gin.Context) {
 // @Param oid path string true "The Object ID (_id) of the category"
 // @Success 200 {object} entity_models.Category "Successful request"
 // @Failure 400 {object} entity_models.Message "Invalid object ID"
+// @Failure 429 {string} string "Too many requests - please only test once every 10 seconds"
 // @Router /categories/{oid} [get]
 func GetCategory(ctx *gin.Context) {
 	code, response := services.GetCategoryResponse(ctx.Param("oid"))

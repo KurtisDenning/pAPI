@@ -1,7 +1,6 @@
 package services
 
 import (
-	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -11,56 +10,54 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func CreateAPIData() {
-}
 func GetAPIDatas() []bson.M {
 	return data.GetAPIDatas()
 }
-func GetAllAPIDatas() []bson.M {
-	return data.GetAllAPIDatas()
-}
-func GetAPIData(oid string) bson.M {
+func GetAPIData(oid string) (int, bson.M) {
 	id, err := primitive.ObjectIDFromHex(oid)
 	if err != nil {
-		fmt.Println("The provided hex value is not a valid object ID")
-		return bson.M{"Message": "The provided hex value is not a valid object ID"}
+		return http.StatusBadRequest, bson.M{"Message": "The provided hex value is not a valid object ID"}
 	}
-	return data.GetAPIData(id)
+	return http.StatusOK, data.GetAPIData(id)
 }
-func UpdateAPIData(oid string) {
-}
-func RefreshAPIData(oid string, requestIndexes []int) bson.M {
+func RefreshAPIData(oid string, requestIndexes []int) (int, bson.M) {
 	id, err := primitive.ObjectIDFromHex(oid)
 	if err != nil {
-		return bson.M{"Message": err}
+		return http.StatusBadRequest, bson.M{"Message": "The provided hex value is not a valid object ID"}
 	}
 	apiToUpdate := data.GetAPIData(id)
 	apiModel, err := entity_models.NewAPIDataStruct(apiToUpdate)
 	if err != nil {
-		return bson.M{"Message": err}
+		return http.StatusInternalServerError, bson.M{"Message": err.Error()}
 	}
-	url, req := apiModel.GetURL(requestIndexes)
+	url, req, err := apiModel.GetURL(requestIndexes)
+	if err != nil {
+		return http.StatusBadRequest, bson.M{"Message": err.Error()}
+	}
 	resp, err := http.Get(url)
 	if err != nil {
-		return bson.M{"Message": err}
+		return http.StatusBadGateway, bson.M{"Message": err.Error()}
 	}
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return bson.M{"Message": err}
+		return http.StatusBadGateway, bson.M{"Message": err.Error()}
 	}
 	err = req.UpdateResponse(body)
 	if err != nil {
-		return bson.M{"Message": err}
+		return http.StatusInternalServerError, bson.M{"Message": err.Error()}
 	}
 	binData, err := bson.Marshal(bson.M{"requests": apiModel.Requests})
 	if err != nil {
-		return bson.M{"Message": err}
+		return http.StatusInternalServerError, bson.M{"Message": err.Error()}
 	}
 	var bsonData bson.M
 	bson.Unmarshal(binData, &bsonData)
-	bsonResponse := data.UpdateAPIResponse(id, bsonData)
-	return bsonResponse
-
-}
-func DeleteAPIData() {
+	data.UpdateAPIResponse(id, bsonData)
+	reqData, err := bson.Marshal(req)
+	if err != nil {
+		return http.StatusInternalServerError, bson.M{"Message": err.Error()}
+	}
+	var reqResponse bson.M
+	bson.Unmarshal(reqData, &reqResponse)
+	return http.StatusOK, reqResponse
 }

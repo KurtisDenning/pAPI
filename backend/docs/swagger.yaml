@@ -1,5 +1,49 @@
 basePath: /api/v1
 definitions:
+  entity_models.APIData:
+    properties:
+      _id:
+        type: string
+      base:
+        type: string
+      categories:
+        items:
+          type: string
+        type: array
+      dailyCount:
+        type: integer
+      description:
+        type: string
+      externalURL:
+        type: string
+      monthlyCount:
+        type: integer
+      requests:
+        items:
+          $ref: '#/definitions/entity_models.Request'
+        type: array
+      title:
+        type: string
+      totalCount:
+        type: integer
+      weeklyCount:
+        type: integer
+      yearlyCount:
+        type: integer
+    type: object
+  entity_models.APIDataOverview:
+    properties:
+      _id:
+        type: string
+      categories:
+        items:
+          type: string
+        type: array
+      description:
+        type: string
+      title:
+        type: string
+    type: object
   entity_models.Category:
     properties:
       _id:
@@ -16,7 +60,21 @@ definitions:
       message:
         type: string
     type: object
-host: papi-project.herokuapp.com
+  entity_models.Request:
+    properties:
+      lastUpdate:
+        type: string
+      request:
+        type: string
+      requests:
+        items:
+          $ref: '#/definitions/entity_models.Request'
+        type: array
+      response:
+        additionalProperties: true
+        type: object
+    type: object
+host: localhost:8080
 info:
   contact: {}
   description: A public API that brings together the data from many other API's and
@@ -24,6 +82,67 @@ info:
   title: pAPI
   version: "1.0"
 paths:
+  /apidata:
+    get:
+      description: Get a list of all API's that are currently stored in the database,
+        and an overview of their information
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful request.
+          schema:
+            items:
+              $ref: '#/definitions/entity_models.APIDataOverview'
+            type: array
+        "429":
+          description: Too many requests - please only test once every 10 seconds
+          schema:
+            type: string
+      summary: Get all API data
+      tags:
+      - APIData
+  /apidata/{oid}:
+    get:
+      description: Get complete information about a single API stored in the database
+      parameters:
+      - description: The Object ID (_id) of the API data
+        in: path
+        name: oid
+        required: true
+        type: string
+      - description: The request ID to check for - is recursive in practice
+        in: query
+        name: requestID
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful request. Please note that requests are recursive,
+            and can have many request layers
+          schema:
+            $ref: '#/definitions/entity_models.APIData'
+        "400":
+          description: Problem with user request - read message for more details
+          schema:
+            $ref: '#/definitions/entity_models.Message'
+        "429":
+          description: Too many requests - please only test once every 10 seconds
+          schema:
+            type: string
+        "500":
+          description: Problem with server processing - read message for more details
+          schema:
+            $ref: '#/definitions/entity_models.Message'
+        "502":
+          description: Problem connecting to external API - read message for more
+            details
+          schema:
+            $ref: '#/definitions/entity_models.Message'
+      summary: Get single API data
+      tags:
+      - APIData
   /categories:
     get:
       description: Get a list of all categories that are currently stored in the database
@@ -36,6 +155,10 @@ paths:
             items:
               $ref: '#/definitions/entity_models.Category'
             type: array
+        "429":
+          description: Too many requests - please only test once every 10 seconds
+          schema:
+            type: string
       summary: Get all categories
       tags:
       - Category
@@ -59,6 +182,10 @@ paths:
           description: Invalid object ID
           schema:
             $ref: '#/definitions/entity_models.Message'
+        "429":
+          description: Too many requests - please only test once every 10 seconds
+          schema:
+            type: string
       summary: Get a category
       tags:
       - Category
