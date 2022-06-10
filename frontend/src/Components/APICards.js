@@ -6,9 +6,9 @@ const APICard = (props) => {
     <>
       <Box p={5}>
         <Heading as="h4" size="md">
-          Title: {props.title}
+          {props.title}
         </Heading>
-        <Text>Description: {props.description}</Text>
+        <Text>{props.description}</Text>
       </Box>
       <Divider />
     </>
