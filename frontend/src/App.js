@@ -1,8 +1,18 @@
 import { React, useState, useEffect } from "react";
-import { ChakraProvider, Divider, Spinner, Center, Button, Text, VStack, Box } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  Divider,
+  Spinner,
+  Center,
+  Button,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./Components/Nav";
 import Header from "./Components/Header";
 import Categories from "./Components/Categories";
+import APIPage from "./Components/APIPage";
 import APIs from "./Components/APIs";
 import Footer from "./Components/Footer";
 import axios from "axios";
@@ -24,17 +34,19 @@ function App() {
   useEffect(() => {
     if (isDevelopment === false) {
       const fetchCategoryData = async () => {
-        const res = await axios.get("https://papi-project.herokuapp.com/api/v1/categories")
-        setCategoryData(res.data)
-        setCategorysLoading(false)
-      }
-      fetchCategoryData()
-
+        const res = await axios.get(
+          "https://papi-project.herokuapp.com/api/v1/categories"
+        );
+        setCategoryData(res.data);
+        setCategorysLoading(false);
+      };
+      fetchCategoryData();
     } else {
-      setTimeout(() => { // Simulates loading times
+      setTimeout(() => {
+        // Simulates loading times
         setCategoryData(CategoriesDevJSON);
-        setCategorysLoading(false)
-      }, 3000)
+        setCategorysLoading(false);
+      }, 3000);
     }
   }, []);
 
@@ -42,47 +54,58 @@ function App() {
   useEffect(() => {
     if (isDevelopment === false) {
       const fetchAPIData = async () => {
-        const res = await axios.get("https://papi-project.herokuapp.com/api/v1/apidata");
+        const res = await axios.get(
+          "https://papi-project.herokuapp.com/api/v1/apidata"
+        );
         setAPIData(res.data);
         setAPIsLoading(false);
-      }
+      };
       fetchAPIData();
     } else {
-      setTimeout(() => { // Simulates loading times
+      setTimeout(() => {
+        // Simulates loading times
         setAPIData(APIDevJSON);
-        setAPIsLoading(false)
+        setAPIsLoading(false);
       }, 3000);
     }
   }, []);
 
-
-  // Could find a better way to do this
   useEffect(() => {
     setTimeout(() => {
-      setShowButton(true)
-    }, 10000)
-  }, [])
+      setShowButton(true);
+    }, 10000);
+  }, []);
 
   function isLoading() {
     if (APIsLoading || categorysLoading) {
       return (
         <>
-          <Center my={20}>
+          <Center my={40}>
             <VStack mx={50}>
               <Spinner size={"xl"} />
 
-              {showButton && <>
-                <Text pt={20} color={"red"}>This is taking longer than expected...</Text>
-                <Button onClick={() => { window.location.reload(false) }}>
-                  <Text>Click here to refresh the page</Text>
-                </Button>
-                <Text fontSize={"xs"} as={"i"}>If the error persists, please reach out to one of our admins at <b>testing@blabla.com</b> .</Text>
-              </>
-              }
+              {showButton && (
+                <>
+                  <Text pt={20} color={"red"}>
+                    This is taking longer than expected...
+                  </Text>
+                  <Button
+                    onClick={() => {
+                      window.location.reload(false);
+                    }}
+                  >
+                    <Text>Click here to refresh the page</Text>
+                  </Button>
+                  <Text fontSize={"xs"} as={"i"}>
+                    If the error persists, please reach out to one of our admins
+                    at <b>testing@blabla.com</b> .
+                  </Text>
+                </>
+              )}
             </VStack>
           </Center>
         </>
-      )
+      );
     } else {
       return (
         <>
@@ -100,16 +123,28 @@ function App() {
             isDevelopment={isDevelopment}
           />
         </>
-      )
+      );
     }
   }
 
   return (
     <ChakraProvider>
       <Nav />
-      <Header query={query} setQuery={setQuery} />
-      <Divider />
-      {isLoading()}
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header query={query} setQuery={setQuery} />
+                <Divider />
+                {isLoading()}
+              </>
+            }
+          />
+          <Route path="api" element={<APIPage />} />
+        </Routes>
+      </Router>
       <Footer />
     </ChakraProvider>
   );
