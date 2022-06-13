@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -142,4 +143,59 @@ func (m *MongoConnection) GetAPIDatas() ([]*APIData, error) {
 		apiDatas = append(apiDatas, &apiData)
 	}
 	return apiDatas, nil
+}
+
+func (m *MongoConnection) UpdateCategory(categoryID primitive.ObjectID, category bson.D) error {
+	err := m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	updateFilter := bson.D{{Key: "_id", Value: categoryID}}
+	result, err := m.client.Database(DATABASE_NAME).Collection("categories").ReplaceOne(m.ctx, updateFilter, category)
+	if err != nil {
+		return err
+	}
+	if result.ModifiedCount != 1 {
+		return errors.New("error: replaced more than one entry")
+	}
+	return nil
+}
+
+func (m *MongoConnection) AddCategory(category bson.D) error {
+	err := m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	result, err := m.client.Database(DATABASE_NAME).Collection("categories").InsertOne(m.ctx, category)
+	if err != nil {
+		return err
+	}
+	if result.InsertedID == nil {
+		return errors.New("error: Something went terribly wrong")
+	}
+	return nil
+}
+
+func (m *MongoConnection) DeleteCategory(id primitive.ObjectID) error {
+	err := m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	delFilter := bson.D{{Key: "_id", Value: id}}
+	result, err := m.client.Database(DATABASE_NAME).Collection("categories").DeleteOne(m.ctx, delFilter)
+	if err != nil {
+		return err
+	}
+
+	if result.DeletedCount != 1 {
+		return errors.New("error: Something has gone terribly wrong")
+	}
+
+	return nil
 }

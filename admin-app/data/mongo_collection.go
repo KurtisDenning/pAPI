@@ -55,14 +55,93 @@ func (c *MongoCollection) NewCategoriesWindow(a fyne.App, categories []*Category
 		}
 	}
 	w := a.NewWindow(c.Name)
-	content := container.NewVBox()
+
 	header := canvas.NewText(c.Name, color.White)
 	header.TextSize = 32
 	header.Alignment = fyne.TextAlignCenter
 
-	content.Add(header)
+	categoryAccordion := widget.NewAccordion()
+	for _, cat := range categories {
+
+		nameEntry := widget.NewEntry()
+		nameEntry.Text = cat.Name
+		shortDescEntry := widget.NewEntry()
+		shortDescEntry.Text = cat.ShortDesc
+		longDescEntry := widget.NewEntry()
+		longDescEntry.Text = cat.LongDesc
+
+		upButt := widget.NewButton("Update", func() {})
+		delButt := widget.NewButton("Delete", func() {})
+
+		cItem := CategoryItem{cat, c.Connection, nameEntry, shortDescEntry, longDescEntry, upButt, delButt}
+		cItem.UpdateButt.OnTapped = func() { cItem.Update(a, w.Title()) }
+		cItem.DeleteButt.OnTapped = func() {
+			cItem.Delete(a, w.Title(), categories, c)
+
+		}
+
+		category := widget.NewAccordionItem(cat.ShortDesc, container.NewGridWithColumns(
+			2,
+			widget.NewLabel("ID"),
+			widget.NewLabel(cat.Id.Hex()),
+			widget.NewLabel("Name"),
+			cItem.NameEntry,
+			widget.NewLabel("Short Description"),
+			cItem.ShortDescEntry,
+			widget.NewLabel("Long Description"),
+			cItem.LongDescEntry,
+			cItem.UpdateButt,
+			cItem.DeleteButt,
+		))
+		categoryAccordion.Append(category)
+	}
+
+	content := container.NewBorder(header, widget.NewButton("New Category", func() { c.NewCategoryWindow(a) }), nil, nil, categoryAccordion)
+
 	w.SetContent(content)
 	return w
+}
+
+func (c *MongoCollection) NewCategoryWindow(a fyne.App) {
+	w := a.NewWindow("New Category")
+	for _, window := range a.Driver().AllWindows() {
+		if window.Title() == "New Category" {
+			w = window
+			break
+		}
+	}
+
+	newCategoryItem := CategoryItem{
+		&Category{},
+		c.Connection,
+		widget.NewEntry(),
+		widget.NewEntry(),
+		widget.NewEntry(),
+		&widget.Button{},
+		&widget.Button{},
+	}
+
+	header := widget.NewLabelWithStyle("New Category", fyne.TextAlignCenter, fyne.TextStyle{})
+
+	footer := container.NewGridWithColumns(2)
+	cancelButton := widget.NewButton("Cancel", w.Close)
+	submitButton := widget.NewButton("Submit", func() {
+		newCategoryItem.Create(w)
+	})
+	footer.Add(submitButton)
+	footer.Add(cancelButton)
+
+	formFields := container.NewGridWithColumns(2)
+	formFields.Add(widget.NewLabel("Name"))
+	formFields.Add(newCategoryItem.NameEntry)
+	formFields.Add(widget.NewLabel("Short Description"))
+	formFields.Add(newCategoryItem.ShortDescEntry)
+	formFields.Add(widget.NewLabel("Long Description"))
+	formFields.Add(newCategoryItem.LongDescEntry)
+
+	content := container.NewBorder(header, footer, nil, nil, formFields)
+	w.SetContent(content)
+	w.Show()
 }
 
 func (c *MongoCollection) NewAPIDatasWindow(a fyne.App, apiDatas []*APIData) fyne.Window {

@@ -1,0 +1,104 @@
+{
+    "_id": {
+        "$oid": "6295cfb73652deb9e3c06d0b"
+    },
+    "title": "Anime Quotes",
+    "description": "So inspire. Much wow.",
+    "externalURL": "https://animechan.vercel.app/",
+    "dailyCount": {
+        "$numberInt": "0"
+    },
+    "weeklyCount": {
+        "$numberInt": "0"
+    },
+    "monthlyCount": {
+        "$numberInt": "0"
+    },
+    "yearlyCount": {
+        "$numberInt": "0"
+    },
+    "totalCount": {
+        "$numberInt": "0"
+    },
+    "categories": [
+        "628e0d4a4e3f4f6c8d644a95"
+    ],
+    "base": "https://animechan.vercel.app/api/",
+    "requests": [
+        {
+            "request": "random",
+            "response": {
+                "quote": "We're going to explore the outside world someday, right? Far beyond these walls, there's flaming water, land made of ice, and fields of sand spread wide. It's the world my parents wanted to go to.",
+                "anime": "Shingeki no Kyojin",
+                "character": "Armin Arlelt"
+            },
+            "lastUpdate": {
+                "$date": {
+                    "$numberLong": "1654046862860"
+                }
+            }
+        },
+        {
+            "request": "quotes",
+            "response": {
+                "data": [
+                    {
+                        "quote": "Oh, I almost forgot. In the event that anyone besides big-headed Near or the deluded murderer is reading these notes, then I should at least perform the basic courtesy of introducing myself, here at the end of the prologue. I am your narrator, your navigator, your storyteller. For anyone else but those two, my identity may be of no interest, but I am the old world's runner-up, the best dresser that died like a dog, Mihael Keehl. I once called myself Mello and was addressed by that name, but that was a long time ago.",
+                        "anime": "Death Note",
+                        "character": "Mello"
+                    },
+                    {
+                        "character": "Alucard",
+                        "quote": "Look well at Integra’s “battle”, Police girl! Integra cut herself open, shed her own blood… and chose to fight for her life. Giving up kills people. When people reject giving up… they finally win the right to transcend humanity. “Never give up, even if it means death”… that is the pride and dignity of our \nmaster.",
+                        "anime": "Hellsing"
+                    },
+                    {
+                        "anime": "Shingeki no Kyojin",
+                        "character": "Erwin Smith",
+                        "quote": "If we only focus on making the best moves, we will never get the better of our opponent. When necessary, we must be willing to take big risks, and be prepared to lose everything. Unless we change how we fight, we cannot win."
+                    },
+                    {
+                        "anime": "Detective Conan",
+                        "character": "Shinichi Kudou",
+                        "quote": "With a keen eye for detail one truth always prevails."
+                    },
+                    {
+                        "quote": "Atone for my sins? [...] I have no sins to atone for, nor have I forced such a meaningless concept on anyone.",
+                        "anime": "Fate/stay night",
+                        "character": "Archer"
+                    },
+                    {
+                        "character": "Midoriya Izuku",
+                        "quote": "People... are not born equal. That's the hard truth I learned at age four. But that... was my first and last setback.",
+                        "anime": "Boku no Hero Academia"
+                    },
+                    {
+                        "quote": "The curtain that falls down at the end, shall be pulled down by the blade of my sword.",
+                        "anime": "Bleach",
+                        "character": "Kuchiki Byakuya"
+                    },
+                    {
+                        "anime": "Avatar: The Last Airbender",
+                        "character": "Mai",
+                        "quote": "[About Omashu] There really is no fathoming the depths of my hatred for this place."
+                    },
+                    {
+                        "quote": "Real GAY will not be swayed no matter how cute a girl is. Please remember this: out of a hundred men... five are GAY.",
+                        "anime": "The Melancholy of Haruhi Suzumiya",
+                        "character": "Kyon"
+                    },
+                    {
+                        "character": "Fumito Nanahara",
+                        "quote": "When a person encounters that which they cannot understand, what do they do? Why, they think. But you know, the more you think about something, the further you get from the truth. Yes. Your thoughts get in the way of what your instincts desire. In the way of the real answer.",
+                        "anime": "Blood-C"
+                    }
+                ]
+            },
+            "lastUpdate": {
+                "$date": {
+                    "$numberLong": "1654048293600"
+                }
+            }
+        }
+    ]
+}

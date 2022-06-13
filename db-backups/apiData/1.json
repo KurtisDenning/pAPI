@@ -1,0 +1,328 @@
+{
+    "_id": {
+        "$oid": "62959878af9bc4a249786af3"
+    },
+    "title": "Waifu Pics",
+    "description": "Cute anime girls uwu",
+    "externalURL": "https://waifu.pics/",
+    "dailyCount": {
+        "$numberInt": "0"
+    },
+    "weeklyCount": {
+        "$numberInt": "0"
+    },
+    "monthlyCount": {
+        "$numberInt": "0"
+    },
+    "yearlyCount": {
+        "$numberInt": "0"
+    },
+    "totalCount": {
+        "$numberInt": "0"
+    },
+    "categories": [
+        "628e0d6a4e3f4f6c8d644a96",
+        "628e0d4a4e3f4f6c8d644a95"
+    ],
+    "requests": [
+        {
+            "request": "",
+            "requests": [
+                {
+                    "response": {
+                        "message": "Not Found"
+                    },
+                    "lastUpdate": {
+                        "$date": {
+                            "$numberLong": "1654822390601"
+                        }
+                    },
+                    "request": "sfw/",
+                    "requests": [
+                        {
+                            "request": "yeet",
+                            "response": {
+                                "url": "https://i.waifu.pics/fDk~7Zw.gif"
+                            },
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1654822423574"
+                                }
+                            }
+                        },
+                        {
+                            "request": "waifu",
+                            "response": {
+                                "url": "https://i.waifu.pics/LhA7EZ9.jpg"
+                            },
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1654657349493"
+                                }
+                            }
+                        },
+                        {
+                            "request": "neko",
+                            "response": {
+                                "url": "https://i.waifu.pics/HxgU_W4.jpg"
+                            },
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1654051734463"
+                                }
+                            }
+                        },
+                        {
+                            "request": "shinobu",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "megumin",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1654051879066"
+                                }
+                            },
+                            "request": "bully",
+                            "response": {
+                                "url": "https://i.waifu.pics/s-0Mz_4.gif"
+                            }
+                        },
+                        {
+                            "request": "cuddle",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "cry",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "hug",
+                            "response": {
+                                "url": "https://i.waifu.pics/8OTc8Kd.gif"
+                            },
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1654822486450"
+                                }
+                            }
+                        },
+                        {
+                            "request": "awoo",
+                            "response": {
+                                "url": "https://i.waifu.pics/Msrk1E_.jpg"
+                            },
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1654657228560"
+                                }
+                            }
+                        },
+                        {
+                            "request": "kiss",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "lick",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "pat",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "smug",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "bonk",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "response": {
+                                "url": "https://i.waifu.pics/-Cf_23g.gif"
+                            },
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1654651282360"
+                                }
+                            },
+                            "request": "blush"
+                        },
+                        {
+                            "request": "smile",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "wave",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "highfive",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "handhold",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "nom",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "bite",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "slap",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "kill",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "kick",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            },
+                            "request": "happy"
+                        },
+                        {
+                            "request": "wink",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "poke",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "dance",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "request": "cringe",
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            }
+                        },
+                        {
+                            "response": {
+                                "url": "https://i.waifu.pics/BtF6Yv7.gif"
+                            },
+                            "lastUpdate": {
+                                "$date": {
+                                    "$numberLong": "1653477780000"
+                                }
+                            },
+                            "request": "glomp"
+                        }
+                    ]
+                }
+            ],
+            "response": {
+                "message": "Not Found"
+            },
+            "lastUpdate": {
+                "$date": {
+                    "$numberLong": "1654821312324"
+                }
+            }
+        }
+    ],
+    "base": "https://api.waifu.pics/"
+}
