@@ -17,7 +17,7 @@ const APICard = (props) => {
         <Button
           my={5}
           onClick={() => {
-            navigate("/api");
+            navigate(`/api/${props._id}`);
           }}
         >
           Explore

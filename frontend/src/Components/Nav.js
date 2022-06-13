@@ -4,7 +4,7 @@ const Nav = () => {
   return (
     <Box px={4}>
       <Flex h={"8vh"} alignItems={"center"}>
-        <Text fontSize={"3xl"}>pAPI</Text>
+        <Text fontSize={"3xl"}>pApi</Text>
       </Flex>
     </Box>
   );
