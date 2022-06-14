@@ -12,5 +12,6 @@ func enableApiDataRoutes() {
 	{
 		apiData.GET("/apidata", tollbooth_gin.LimitHandler(limiter), controllers.GetAPIDatas)
 		apiData.GET("/apidata/:oid", tollbooth_gin.LimitHandler(limiter), controllers.GetAPIData)
+		apiData.GET("/apidata/:oid/:request", tollbooth_gin.LimitHandler(limiter), controllers.GetAPIDataRequest)
 	}
 }

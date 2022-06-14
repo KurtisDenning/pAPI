@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/oliverschweikert/pAPI/backend/api/v1/entity_models"
 	"github.com/oliverschweikert/pAPI/backend/api/v1/services"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 // GetAPIDatas godoc
@@ -35,16 +35,17 @@ func GetAPIDatas(ctx *gin.Context) {
 // @Failure 429 {string} string "Too many requests - please only test once every 10 seconds"
 // @Router /apidata/{oid} [get]
 func GetAPIData(ctx *gin.Context) {
-	requestId, hasIds := ctx.GetQuery("requestID")
-	if hasIds {
-		index, err := strconv.Atoi(requestId)
-		if err != nil {
-			ctx.JSON(http.StatusBadRequest, entity_models.Message{Message: "Invalid request ID - please enter integers only"})
-		}
-		code, response := services.RefreshAPIData(ctx.Param("oid"), index)
-		ctx.JSON(code, response)
+	code, response := services.GetAPIData(ctx.Param("oid"))
+	ctx.JSON(code, response)
+
+}
+
+func GetAPIDataRequest(ctx *gin.Context) {
+	request, err := strconv.Atoi(ctx.Param("request"))
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, bson.M{"Error": err.Error()})
 	} else {
-		code, response := services.GetAPIData(ctx.Param("oid"))
+		code, response := services.RefreshAPIData(ctx.Param("oid"), request)
 		ctx.JSON(code, response)
 	}
 }
