@@ -73,7 +73,10 @@ func GetAPIData(oid primitive.ObjectID) bson.M {
 
 	apiData := client.Database("papi_db").Collection("apiData").FindOne(ctx, bson.M{"_id": oid})
 	var doc bson.M
-	apiData.Decode(&doc)
+	err = apiData.Decode(&doc)
+	if err != nil {
+		fmt.Println("Error decoding MongoDB document")
+	}
 	return doc
 }
 

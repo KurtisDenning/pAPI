@@ -20,7 +20,7 @@ func GetAPIData(oid string) (int, bson.M) {
 	}
 	return http.StatusOK, data.GetAPIData(id)
 }
-func RefreshAPIData(oid string, requestIndexes []int) (int, bson.M) {
+func RefreshAPIData(oid string, index int) (int, bson.M) {
 	id, err := primitive.ObjectIDFromHex(oid)
 	if err != nil {
 		return http.StatusBadRequest, bson.M{"Message": "The provided hex value is not a valid object ID"}
@@ -30,7 +30,7 @@ func RefreshAPIData(oid string, requestIndexes []int) (int, bson.M) {
 	if err != nil {
 		return http.StatusInternalServerError, bson.M{"Message": err.Error()}
 	}
-	url, req, err := apiModel.GetURL(requestIndexes)
+	url, req, err := apiModel.GetURL(index)
 	if err != nil {
 		return http.StatusBadRequest, bson.M{"Message": err.Error()}
 	}

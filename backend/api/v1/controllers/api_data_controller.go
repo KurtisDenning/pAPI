@@ -35,22 +35,15 @@ func GetAPIDatas(ctx *gin.Context) {
 // @Failure 429 {string} string "Too many requests - please only test once every 10 seconds"
 // @Router /apidata/{oid} [get]
 func GetAPIData(ctx *gin.Context) {
-	requestIds, hasIds := ctx.GetQueryArray("requestID")
+	requestId, hasIds := ctx.GetQuery("requestID")
 	if hasIds {
-		requestIndexes := []int{}
-		for _, s := range requestIds {
-			i, err := strconv.Atoi(s)
-			if err != nil {
-				ctx.JSON(http.StatusBadRequest, entity_models.Message{Message: "Invalid request ID - please enter integers only"})
-				break
-			} else {
-				requestIndexes = append(requestIndexes, i)
-			}
+		index, err := strconv.Atoi(requestId)
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, entity_models.Message{Message: "Invalid request ID - please enter integers only"})
 		}
-		code, response := services.RefreshAPIData(ctx.Param("oid"), requestIndexes)
+		code, response := services.RefreshAPIData(ctx.Param("oid"), index)
 		ctx.JSON(code, response)
 	} else {
-
 		code, response := services.GetAPIData(ctx.Param("oid"))
 		ctx.JSON(code, response)
 	}
