@@ -1,4 +1,4 @@
-import { React, useState, useRef } from "react";
+import { React, useState } from "react";
 import APICard from "./APICards";
 import { Heading, Box } from "@chakra-ui/react";
 import Pagination from "./Pagination";
@@ -39,8 +39,7 @@ const APIs = ({ query, category, APIData }) => {
 
   return (
     <Box>
-      <Box id={"APIs"} h={1}></Box>
-      <Box my={50} mx={[50, 100, 150]}>
+      <Box id={"APIs"} my={50} mx={[50, 100, 150]}>
         <Heading as={"h3"} size={"lg"} mb={"50px"}>
           API's
         </Heading>

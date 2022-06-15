@@ -8,8 +8,8 @@ import {
   InputGroup,
   InputRightElement,
   Center,
-  Button,
 } from "@chakra-ui/react";
+import { Link } from "react-scroll";
 import { React } from "react";
 
 const Header = ({ query, setQuery }) => {
@@ -45,7 +45,15 @@ const Header = ({ query, setQuery }) => {
                 bg="#ffffff"
                 color="black"
               >
-                <Button>GO</Button>
+                <Link
+                  to="APIs"
+                  spy={true}
+                  smooth={true}
+                  offset={-50}
+                  duration={500}
+                >
+                  GO
+                </Link>
               </Box>
             </InputRightElement>
           </InputGroup>
