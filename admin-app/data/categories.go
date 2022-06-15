@@ -18,9 +18,9 @@ type Category struct {
 }
 type CategoryItem struct {
 	*Category
-	Connection                               *MongoConnection
-	NameEntry, ShortDescEntry, LongDescEntry *widget.Entry
-	UpdateButt, DeleteButt                   *widget.Button
+	Connection                                        *MongoConnection
+	IDEntry, NameEntry, ShortDescEntry, LongDescEntry *widget.Entry
+	UpdateButt, DeleteButt                            *widget.Button
 }
 
 func (c *CategoryItem) Update(a fyne.App, windowTitle string) {

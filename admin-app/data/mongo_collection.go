@@ -63,6 +63,8 @@ func (c *MongoCollection) NewCategoriesWindow(a fyne.App, categories []*Category
 	categoryAccordion := widget.NewAccordion()
 	for _, cat := range categories {
 
+		idEntry := widget.NewEntry()
+		idEntry.Text = cat.Id.Hex()
 		nameEntry := widget.NewEntry()
 		nameEntry.Text = cat.Name
 		shortDescEntry := widget.NewEntry()
@@ -73,7 +75,7 @@ func (c *MongoCollection) NewCategoriesWindow(a fyne.App, categories []*Category
 		upButt := widget.NewButton("Update", func() {})
 		delButt := widget.NewButton("Delete", func() {})
 
-		cItem := CategoryItem{cat, c.Connection, nameEntry, shortDescEntry, longDescEntry, upButt, delButt}
+		cItem := CategoryItem{cat, c.Connection, idEntry, nameEntry, shortDescEntry, longDescEntry, upButt, delButt}
 		cItem.UpdateButt.OnTapped = func() { cItem.Update(a, w.Title()) }
 		cItem.DeleteButt.OnTapped = func() {
 			cItem.Delete(a, w.Title(), categories, c)
@@ -82,7 +84,7 @@ func (c *MongoCollection) NewCategoriesWindow(a fyne.App, categories []*Category
 		category := widget.NewAccordionItem(cat.ShortDesc, container.NewGridWithColumns(
 			2,
 			widget.NewLabel("ID"),
-			widget.NewLabel(cat.Id.Hex()),
+			cItem.IDEntry,
 			widget.NewLabel("Name"),
 			cItem.NameEntry,
 			widget.NewLabel("Short Description"),
@@ -113,6 +115,7 @@ func (c *MongoCollection) NewCategoryWindow(a fyne.App) {
 	newCategoryItem := CategoryItem{
 		&Category{},
 		c.Connection,
+		widget.NewEntry(),
 		widget.NewEntry(),
 		widget.NewEntry(),
 		widget.NewEntry(),
@@ -157,8 +160,8 @@ func (c *MongoCollection) NewAPIDatasWindow(a fyne.App, apiDatas []*APIData) fyn
 	header.Alignment = fyne.TextAlignCenter
 
 	acc := widget.NewAccordion()
-	for _, a := range apiDatas {
-		apiItem := InitEmptyAPIDataItem(a)
+	for _, api := range apiDatas {
+		apiItem := InitEmptyAPIDataItem(api, c.Connection, a, w)
 
 		accDetail := container.NewGridWithColumns(2)
 		accDetail.Add(widget.NewLabel("ID"))

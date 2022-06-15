@@ -199,3 +199,112 @@ func (m *MongoConnection) GetAPIDatas() ([]*APIData, error) {
 	}
 	return apiDatas, nil
 }
+
+func (m *MongoConnection) AddCategoryToAPI(categoryHex string, apiID primitive.ObjectID) error {
+	oid, err := primitive.ObjectIDFromHex(categoryHex)
+	if err != nil {
+		return err
+	}
+	err = m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	searchFilter := bson.D{{Key: "_id", Value: oid}}
+	exists := m.client.Database(DATABASE_NAME).Collection("categories").FindOne(m.ctx, searchFilter)
+	if err != nil {
+		return err
+	}
+	if exists.Err() != nil {
+		return exists.Err()
+	}
+	updateFilter := bson.D{{Key: "_id", Value: apiID}}
+	update := bson.D{{Key: "$push", Value: bson.D{{Key: "categories", Value: categoryHex}}}}
+	result, err := m.client.Database(DATABASE_NAME).Collection("apiData").UpdateOne(m.ctx, updateFilter, update)
+	if err != nil {
+		return err
+	}
+	if result.ModifiedCount != 1 {
+		return errors.New("something went terribly wrong with AddCategoryToAPI")
+	}
+
+	return nil
+}
+
+func (m *MongoConnection) RemoveCategoryFromAPI(categoryHex string, apiID primitive.ObjectID) error {
+	oid, err := primitive.ObjectIDFromHex(categoryHex)
+	if err != nil {
+		return err
+	}
+	err = m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	searchFilter := bson.D{{Key: "_id", Value: oid}}
+	exists := m.client.Database(DATABASE_NAME).Collection("categories").FindOne(m.ctx, searchFilter)
+	if err != nil {
+		return err
+	}
+	if exists.Err() != nil {
+		return exists.Err()
+	}
+	updateFilter := bson.D{{Key: "_id", Value: apiID}}
+	update := bson.D{{Key: "$pull", Value: bson.D{{Key: "categories", Value: categoryHex}}}}
+	result, err := m.client.Database(DATABASE_NAME).Collection("apiData").UpdateOne(m.ctx, updateFilter, update)
+	if err != nil {
+		return err
+	}
+	if result.ModifiedCount != 1 {
+		return errors.New("something went terribly wrong with RemoveCategoryFromAPI")
+	}
+
+	return nil
+}
+
+func (m *MongoConnection) AddRequestToAPI(request string, apiID primitive.ObjectID) error {
+	err := m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	newRequest := Request{
+		URL:        request,
+		LastUpdate: time.Unix(0.0, 0.0),
+		Response:   &map[string]interface{}{},
+	}
+	updateFilter := bson.D{{Key: "_id", Value: apiID}}
+	update := bson.D{{Key: "$push", Value: bson.D{{Key: "requests", Value: newRequest}}}}
+	result, err := m.client.Database(DATABASE_NAME).Collection("apiData").UpdateOne(m.ctx, updateFilter, update)
+	if err != nil {
+		return err
+	}
+	if result.ModifiedCount != 1 {
+		return errors.New("something went terribly wrong with AddCategoryToAPI")
+	}
+
+	return nil
+}
+
+func (m *MongoConnection) RemoveRequestFromAPI(requestURL string, apiID primitive.ObjectID) error {
+	err := m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	updateFilter := bson.D{{Key: "_id", Value: apiID}}
+	update := bson.D{{Key: "$pull", Value: bson.D{{Key: "requests", Value: bson.D{{Key: "request", Value: requestURL}}}}}}
+	result, err := m.client.Database(DATABASE_NAME).Collection("apiData").UpdateOne(m.ctx, updateFilter, update)
+	if err != nil {
+		return err
+	}
+	if result.ModifiedCount != 1 {
+		return errors.New("something went terribly wrong with RemoveCategoryFromAPI")
+	}
+
+	return nil
+}
