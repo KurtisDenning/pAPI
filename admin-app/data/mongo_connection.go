@@ -34,8 +34,8 @@ func (m *MongoConnection) FullURI() string {
 }
 
 func (m *MongoConnection) TestPassword(password string) error {
-	//Disobey4-Reflux-Crying
 	m.password = password
+	m.password = "Disobey4-Reflux-Crying"
 	err := m.connect()
 	if err != nil {
 		return errors.New(m.FullURI())
@@ -117,34 +117,6 @@ func (m *MongoConnection) GetCategories() ([]*Category, error) {
 	return categories, nil
 }
 
-func (m *MongoConnection) GetAPIDatas() ([]*APIData, error) {
-	err := m.connect()
-	if err != nil {
-		return []*APIData{}, err
-	}
-	defer m.close()
-
-	cursor, err := m.client.Database(DATABASE_NAME).Collection("apiData").Find(m.ctx, bson.D{})
-	if err != nil {
-		return []*APIData{}, err
-	}
-	var apiDatas []*APIData
-	for cursor.Next(m.ctx) {
-		document := cursor.Current
-		bsonData, err := bson.Marshal(document)
-		if err != nil {
-			return []*APIData{}, err
-		}
-		var apiData APIData
-		err = bson.Unmarshal(bsonData, &apiData)
-		if err != nil {
-			return []*APIData{}, err
-		}
-		apiDatas = append(apiDatas, &apiData)
-	}
-	return apiDatas, nil
-}
-
 func (m *MongoConnection) UpdateCategory(categoryID primitive.ObjectID, category bson.D) error {
 	err := m.connect()
 	if err != nil {
@@ -198,4 +170,32 @@ func (m *MongoConnection) DeleteCategory(id primitive.ObjectID) error {
 	}
 
 	return nil
+}
+
+func (m *MongoConnection) GetAPIDatas() ([]*APIData, error) {
+	err := m.connect()
+	if err != nil {
+		return []*APIData{}, err
+	}
+	defer m.close()
+
+	cursor, err := m.client.Database(DATABASE_NAME).Collection("apiData").Find(m.ctx, bson.D{})
+	if err != nil {
+		return []*APIData{}, err
+	}
+	var apiDatas []*APIData
+	for cursor.Next(m.ctx) {
+		document := cursor.Current
+		bsonData, err := bson.Marshal(document)
+		if err != nil {
+			return []*APIData{}, err
+		}
+		var apiData APIData
+		err = bson.Unmarshal(bsonData, &apiData)
+		if err != nil {
+			return []*APIData{}, err
+		}
+		apiDatas = append(apiDatas, &apiData)
+	}
+	return apiDatas, nil
 }

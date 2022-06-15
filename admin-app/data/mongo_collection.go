@@ -77,7 +77,6 @@ func (c *MongoCollection) NewCategoriesWindow(a fyne.App, categories []*Category
 		cItem.UpdateButt.OnTapped = func() { cItem.Update(a, w.Title()) }
 		cItem.DeleteButt.OnTapped = func() {
 			cItem.Delete(a, w.Title(), categories, c)
-
 		}
 
 		category := widget.NewAccordionItem(cat.ShortDesc, container.NewGridWithColumns(
@@ -152,11 +151,51 @@ func (c *MongoCollection) NewAPIDatasWindow(a fyne.App, apiDatas []*APIData) fyn
 		}
 	}
 	w := a.NewWindow(c.Name)
-	content := container.NewVBox()
+
 	header := canvas.NewText(c.Name, color.White)
 	header.TextSize = 32
 	header.Alignment = fyne.TextAlignCenter
-	content.Add(header)
+
+	acc := widget.NewAccordion()
+	for _, a := range apiDatas {
+		apiItem := InitEmptyAPIDataItem(a)
+
+		accDetail := container.NewGridWithColumns(2)
+		accDetail.Add(widget.NewLabel("ID"))
+		idWidget := widget.NewEntry()
+		idWidget.Text = apiItem.Id.Hex()
+		accDetail.Add(idWidget)
+		accDetail.Add(widget.NewLabel("Title"))
+		accDetail.Add(apiItem.TitleE)
+		accDetail.Add(widget.NewLabel("Description"))
+		accDetail.Add(apiItem.DescriptionE)
+		accDetail.Add(widget.NewLabel("ExternalURL"))
+		accDetail.Add(apiItem.ExternalURLE)
+		accDetail.Add(widget.NewLabel("BaseURL"))
+		accDetail.Add(apiItem.BaseE)
+
+		accFunc := container.NewGridWithColumns(2)
+		accFunc.Add(apiItem.UpBut)
+		accFunc.Add(apiItem.DelBut)
+
+		accCollections := container.NewBorder(apiItem.CategoriesC.Accordion, apiItem.RequestsC.Accordion, nil, nil)
+
+		accAll := container.NewBorder(accDetail, accFunc, nil, nil, accCollections)
+		accItem := widget.NewAccordionItem(
+			apiItem.Title,
+			accAll,
+		)
+		acc.Items = append(acc.Items, accItem)
+	}
+	apiItems := container.NewScroll(acc)
+
+	footer := widget.NewButton(
+		"New API Data",
+		CreateAPIData,
+	)
+
+	content := container.NewBorder(header, footer, nil, nil, apiItems)
 	w.SetContent(content)
+	w.Resize(w.Content().Size().AddWidthHeight(acc.Size().Width, acc.Size().Height))
 	return w
 }
