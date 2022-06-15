@@ -194,11 +194,58 @@ func (c *MongoCollection) NewAPIDatasWindow(a fyne.App, apiDatas []*APIData) fyn
 
 	footer := widget.NewButton(
 		"New API Data",
-		CreateAPIData,
+		func() { c.NewAPIDataWindow(a) },
 	)
 
 	content := container.NewBorder(header, footer, nil, nil, apiItems)
 	w.SetContent(content)
 	w.Resize(w.Content().Size().AddWidthHeight(acc.Size().Width, acc.Size().Height))
 	return w
+}
+
+func (c *MongoCollection) NewAPIDataWindow(a fyne.App) {
+	w := a.NewWindow("New API Data")
+	for _, window := range a.Driver().AllWindows() {
+		if window.Title() == "New API Data" {
+			w = window
+			break
+		}
+	}
+
+	newAPIDataItem := APIDataItem{
+		APIData:      &APIData{},
+		App:          a,
+		Window:       w,
+		Connection:   c.Connection,
+		CategoriesC:  &APIDataCategoryCollection{},
+		RequestsC:    &APIDataRequestCollection{},
+		TitleE:       &widget.Entry{},
+		DescriptionE: &widget.Entry{},
+		ExternalURLE: &widget.Entry{},
+		BaseE:        &widget.Entry{},
+		UpBut:        &widget.Button{},
+		DelBut:       &widget.Button{},
+	}
+
+	header := widget.NewLabelWithStyle("New API Data", fyne.TextAlignCenter, fyne.TextStyle{})
+
+	footer := container.NewGridWithColumns(2)
+	cancelButton := widget.NewButton("Cancel", w.Close)
+	submitButton := widget.NewButton("Submit", func() { newAPIDataItem.CreateAPIData(w) })
+	footer.Add(submitButton)
+	footer.Add(cancelButton)
+
+	formFields := container.NewGridWithColumns(2)
+	formFields.Add(widget.NewLabel("Title"))
+	formFields.Add(newAPIDataItem.TitleE)
+	formFields.Add(widget.NewLabel("Description"))
+	formFields.Add(newAPIDataItem.DescriptionE)
+	formFields.Add(widget.NewLabel("External URL"))
+	formFields.Add(newAPIDataItem.ExternalURLE)
+	formFields.Add(widget.NewLabel("Base URL"))
+	formFields.Add(newAPIDataItem.BaseE)
+
+	content := container.NewBorder(header, footer, nil, nil, formFields)
+	w.SetContent(content)
+	w.Show()
 }

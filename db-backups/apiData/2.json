@@ -27,14 +27,41 @@
     "base": "https://cataas.com/",
     "requests": [
         {
-            "request": "cat/",
-            "response": {},
-            "lastUpdate": ""
+            "request": "cat?json=true",
+            "response": {
+                "url": "/cat/5e6385d925c078001775ac3f",
+                "id": "5e6385d925c078001775ac3f",
+                "created_at": "2020-03-07T11:30:33.691Z",
+                "tags": [
+                    "black",
+                    "funny",
+                    "moody",
+                    "kuro",
+                    "cute"
+                ]
+            },
+            "lastUpdate": {
+                "$date": {
+                    "$numberLong": "1655264350056"
+                }
+            }
         },
         {
-            "request": "cat/gif",
-            "response": {},
-            "lastUpdate": ""
+            "response": {
+                "tags": [
+                    "advent-calendar-2016",
+                    "gif"
+                ],
+                "url": "/cat/595f2810557291a9750ebfd6",
+                "id": "595f2810557291a9750ebfd6",
+                "created_at": "2016-12-28T11:51:30.714Z"
+            },
+            "lastUpdate": {
+                "$date": {
+                    "$numberLong": "1655181428847"
+                }
+            },
+            "request": "cat/gif?json=true"
         }
     ]
 }

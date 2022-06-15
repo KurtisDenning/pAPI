@@ -308,3 +308,58 @@ func (m *MongoConnection) RemoveRequestFromAPI(requestURL string, apiID primitiv
 
 	return nil
 }
+
+func (m *MongoConnection) UpdateAPIData(categoryID primitive.ObjectID, category bson.D) error {
+	err := m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	updateFilter := bson.D{{Key: "_id", Value: categoryID}}
+	result, err := m.client.Database(DATABASE_NAME).Collection("apiData").ReplaceOne(m.ctx, updateFilter, category)
+	if err != nil {
+		return err
+	}
+	if result.ModifiedCount != 1 {
+		return errors.New("error: replaced more than one entry")
+	}
+	return nil
+}
+
+func (m *MongoConnection) AddAPIData(apiData bson.D) error {
+	err := m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	result, err := m.client.Database(DATABASE_NAME).Collection("apiData").InsertOne(m.ctx, apiData)
+	if err != nil {
+		return err
+	}
+	if result.InsertedID == nil {
+		return errors.New("error: Something went terribly wrong with AddAPIData")
+	}
+	return nil
+}
+
+func (m *MongoConnection) DeleteAPIData(id primitive.ObjectID) error {
+	err := m.connect()
+	if err != nil {
+		return err
+	}
+	defer m.close()
+
+	delFilter := bson.D{{Key: "_id", Value: id}}
+	result, err := m.client.Database(DATABASE_NAME).Collection("apiData").DeleteOne(m.ctx, delFilter)
+	if err != nil {
+		return err
+	}
+
+	if result.DeletedCount != 1 {
+		return errors.New("error: Something has gone wrong with DeleteAPIData")
+	}
+
+	return nil
+}

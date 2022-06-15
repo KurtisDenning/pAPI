@@ -8,6 +8,7 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/widget"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -22,11 +23,11 @@ type APIData struct {
 	Title        string               `json:"title" bson:"title"`
 	Description  string               `json:"description" bson:"description"`
 	ExternalURL  string               `json:"externalURL" bson:"externalURL"`
-	DailyCount   *int                 `json:"dailyCount" bson:"dailyCount"`
-	WeeklyCount  *int                 `json:"weeklyCount" bson:"weeklyCount"`
-	MonthlyCount *int                 `json:"monthlyCount" bson:"monthlyCount"`
-	YearlyCount  *int                 `json:"yearlyCount" bson:"yearlyCount"`
-	TotalCount   *int                 `json:"totalCount" bson:"totalCount"`
+	DailyCount   int                  `json:"dailyCount" bson:"dailyCount"`
+	WeeklyCount  int                  `json:"weeklyCount" bson:"weeklyCount"`
+	MonthlyCount int                  `json:"monthlyCount" bson:"monthlyCount"`
+	YearlyCount  int                  `json:"yearlyCount" bson:"yearlyCount"`
+	TotalCount   int                  `json:"totalCount" bson:"totalCount"`
 	Base         string               `json:"base" bson:"base"`
 	Categories   []primitive.ObjectID `json:"categories" bson:"categories"`
 	Requests     []*Request           `json:"requests" bson:"requests"`
@@ -67,10 +68,6 @@ type APIDataRequestCollection struct {
 	Requests  []*APIDataRequestItem
 	Accordion *widget.Accordion
 	NewBut    *widget.Button
-}
-
-func CreateAPIData() {
-	fmt.Println("Creating a new APIData")
 }
 
 func InitEmptyAPIDataItem(app *APIData, connection *MongoConnection, a fyne.App, w fyne.Window) APIDataItem {
@@ -136,19 +133,119 @@ func InitEmptyAPIDataItem(app *APIData, connection *MongoConnection, a fyne.App,
 	item.BaseE = widget.NewEntry()
 	item.BaseE.Text = app.Base
 
-	item.UpBut = widget.NewButton("Update", item.UpdateAPIData)
+	item.UpBut = widget.NewButton("Update", func() { item.UpdateAPIData(w.Title()) })
 
-	item.DelBut = widget.NewButton("Delete", item.DeleteAPIData)
+	item.DelBut = widget.NewButton("Delete", func() { item.DeleteAPIData(w) })
 
 	return item
 }
 
-func (a *APIDataItem) UpdateAPIData() {
-	fmt.Println("Update Item")
+func (a *APIDataItem) CreateAPIData(w fyne.Window) {
+
+	a.APIData = &APIData{
+		Id:           primitive.NewObjectID(),
+		Title:        a.TitleE.Text,
+		Description:  a.DescriptionE.Text,
+		ExternalURL:  a.ExternalURLE.Text,
+		DailyCount:   0,
+		WeeklyCount:  0,
+		MonthlyCount: 0,
+		YearlyCount:  0,
+		TotalCount:   0,
+		Base:         a.BaseE.Text,
+		Categories:   []primitive.ObjectID{},
+		Requests:     []*Request{},
+	}
+
+	byteData, err := bson.Marshal(a.APIData)
+	if err != nil {
+		d := dialog.NewInformation("Error!", err.Error(), w)
+		d.Show()
+		d.SetOnClosed(func() {
+			w.Close()
+		})
+	} else {
+		var bsonData bson.D
+		err := bson.Unmarshal(byteData, &bsonData)
+		if err != nil {
+			d := dialog.NewInformation("Error!", err.Error(), w)
+			d.Show()
+			d.SetOnClosed(func() {
+				w.Close()
+			})
+		} else {
+			fmt.Println(bsonData)
+			err := a.Connection.AddAPIData(bsonData)
+			if err != nil {
+				d := dialog.NewInformation("Error!", err.Error(), w)
+				d.Show()
+				d.SetOnClosed(func() {
+					w.Close()
+				})
+			} else {
+				d := dialog.NewInformation("Success!", fmt.Sprintf("Created %v", a.TitleE.Text), w)
+				d.Show()
+				d.SetOnClosed(func() {
+					w.Close()
+				})
+			}
+		}
+	}
 }
 
-func (a *APIDataItem) DeleteAPIData() {
-	fmt.Println("Deleted Item")
+func (a *APIDataItem) UpdateAPIData(windowTitle string) {
+	var window fyne.Window
+	for _, w := range a.App.Driver().AllWindows() {
+		if w.Title() == windowTitle {
+			window = w
+			break
+		}
+	}
+
+	a.Title = a.TitleE.Text
+	a.Description = a.DescriptionE.Text
+	a.ExternalURL = a.ExternalURLE.Text
+	a.Base = a.BaseE.Text
+
+	byteData, err := bson.Marshal(a.APIData)
+	if err != nil {
+		d := dialog.NewInformation("Error", err.Error(), window)
+		d.Show()
+	} else {
+		var bsonData bson.D
+		err = bson.Unmarshal(byteData, &bsonData)
+		if err != nil {
+			d := dialog.NewInformation("Error", err.Error(), window)
+			d.Show()
+		} else {
+			err = a.Connection.UpdateAPIData(a.Id, bsonData)
+			if err != nil {
+				d := dialog.NewInformation("Error", err.Error(), window)
+				d.Show()
+			} else {
+				d := dialog.NewInformation("Success", fmt.Sprintf("Successfully updated %v", a.Id.Hex()), window)
+				d.SetOnClosed(func() { window.Content().Refresh() })
+				d.Show()
+			}
+		}
+	}
+}
+
+func (a *APIDataItem) DeleteAPIData(w fyne.Window) {
+	d := dialog.NewConfirm("Delete", fmt.Sprintf("Are you sure you want to delete %v?", a.Title), func(b bool) {
+		if b {
+			err := a.Connection.DeleteAPIData(a.Id)
+			if err != nil {
+				d := dialog.NewInformation("Error", err.Error(), w)
+				d.Show()
+			} else {
+				d := dialog.NewInformation("Success", fmt.Sprintf("Deleted %v", a.Title), w)
+				d.SetOnClosed(func() { w.Close() })
+				d.Show()
+			}
+		}
+	}, w)
+	d.Show()
 }
 
 func (a *APIDataCategoryCollection) AddCategoryToAPI() {
