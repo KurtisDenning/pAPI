@@ -20,7 +20,7 @@ import CategoriesDevJSON from "./DevData/Categories.json";
 import APIDevJSON from "./DevData/APIs.json";
 
 function App() {
-  const isDevelopment = true;
+  const isDevelopment = false;
 
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState(null);

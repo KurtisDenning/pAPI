@@ -5,6 +5,14 @@ import { Box, Divider, Text, Heading, Button, Flex } from "@chakra-ui/react";
 const APICard = (props) => {
   let navigate = useNavigate();
 
+  function nav() {
+    navigate(`/api/${props._id}`);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <>
       <Box p={5}>
@@ -17,7 +25,7 @@ const APICard = (props) => {
         <Button
           my={5}
           onClick={() => {
-            navigate(`/api/${props._id}`);
+            nav();
           }}
         >
           Explore

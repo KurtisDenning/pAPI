@@ -1,10 +1,9 @@
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import APICard from "./APICards";
 import { Heading, Box } from "@chakra-ui/react";
 import Pagination from "./Pagination";
 
 const APIs = ({ query, category, APIData }) => {
-
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(3);
 
@@ -36,7 +35,7 @@ const APIs = ({ query, category, APIData }) => {
   const currentItems = apiCards.slice(indexOfFirstItem, indexOfLastItem);
 
   //Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber)
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <Box>
@@ -46,10 +45,14 @@ const APIs = ({ query, category, APIData }) => {
           API's
         </Heading>
         {currentItems}
-        <Pagination itemsPerPage={itemsPerPage} totalPosts={APIData.length} paginate={paginate} />
+        <Pagination
+          itemsPerPage={itemsPerPage}
+          totalPosts={APIData.length}
+          paginate={paginate}
+        />
       </Box>
     </Box>
   );
-}
+};
 
 export default APIs;

@@ -3,16 +3,17 @@ import axios from "axios";
 import {
   Box,
   Spinner,
-  Button,
   Text,
   Accordion,
   AccordionIcon,
   AccordionButton,
   AccordionItem,
   AccordionPanel,
+  Heading,
+  Center,
 } from "@chakra-ui/react";
 
-function APIAccordion({ item, index, id }) {
+function APIAccordion({ item, index, id, isEven }) {
   const [loading, setLoading] = useState(true);
   const [response, setResponse] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -28,29 +29,43 @@ function APIAccordion({ item, index, id }) {
     }
   };
 
+  let accordionBg;
+
+  if (isEven) {
+    accordionBg = "gray.100";
+  } else {
+    accordionBg = "gray.400";
+  }
+
   return (
     <>
-      <Accordion allowToggle>
-        <AccordionItem>
-          <h2>
+      <Box bg={accordionBg}>
+        <Accordion allowToggle mb={"5"}>
+          <AccordionItem>
             <AccordionButton onClick={fetchData}>
               <Box flex="1" textAlign="left">
-                {item.request}
+                <Heading as={"h3"} size={"md"}>
+                  {item.request}
+                </Heading>
               </Box>
               <AccordionIcon />
             </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4} onClick={fetchData}>
-            {loading && (
-              <Box my={50} mx={[50, 100, 150]}>
-                <Spinner size={"xl"} />
-              </Box>
-            )}
+            <AccordionPanel pb={4} onClick={fetchData} p={1}>
+              <Box bg={"white"} p={5}>
+                {loading && (
+                  <>
+                    <Center my={20}>
+                      <Spinner size={"xl"} />
+                    </Center>
+                  </>
+                )}
 
-            {!loading && <Text>{JSON.stringify(response)}</Text>}
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
+                {!loading && <Text>{JSON.stringify(response)}</Text>}
+              </Box>
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+      </Box>
     </>
   );
 }

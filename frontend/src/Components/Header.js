@@ -8,6 +8,7 @@ import {
   InputGroup,
   InputRightElement,
   Center,
+  Button,
 } from "@chakra-ui/react";
 import { React } from "react";
 
@@ -44,11 +45,11 @@ const Header = ({ query, setQuery }) => {
                 bg="#ffffff"
                 color="black"
               >
-                <a href="#APIs">GO</a>
+                <Button>GO</Button>
               </Box>
             </InputRightElement>
           </InputGroup>
-        </Center>{" "}
+        </Center>
       </Box>
     </>
   );
