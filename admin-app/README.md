@@ -119,7 +119,7 @@ This application directly connects to MongoDB. During development there were iss
 
 ## Tutorial
 
-Step 1 - Download and run the `papiAdmin` application
+Step 1 - Download and run the [papiAdmin](builds) application. If you're on WIndows there may be issues with the Firewall, but rest assured this is not a virus. Just allow it to run.
 
 Step 2 - Click `Connect`.
 ![Click Connect](docs/images/walkthrough01.png)
