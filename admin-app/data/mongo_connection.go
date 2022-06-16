@@ -35,7 +35,6 @@ func (m *MongoConnection) FullURI() string {
 
 func (m *MongoConnection) TestPassword(password string) error {
 	m.password = password
-	m.password = "Disobey4-Reflux-Crying"
 	err := m.connect()
 	if err != nil {
 		return errors.New(m.FullURI())
