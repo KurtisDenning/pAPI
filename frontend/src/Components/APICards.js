@@ -14,9 +14,9 @@ const APICard = (props) => {
   }
 
   return (
-    <Box m={5}>
+    <Box m={10}>
       <Box p={5}>
-        <Text fontSize={["1.25rem", "1.5rem", "2rem"]}>
+        <Text fontSize={["1.25rem", "1.5rem", "2rem"]} color={"#222222"}>
           {props.title}
         </Text>
         <Text noOfLines={1} fontSize={["1rem", null, "1.25rem"]} color="gray">{props.description}</Text>
@@ -24,7 +24,13 @@ const APICard = (props) => {
       <Flex justify={"end"}>
         <Button
           fontSize={"1rem"}
-          my={5}
+          my={10}
+          _hover={{
+            bg: "#222222",
+            color: "#ffffff",
+          }}
+          color={"#222222"}
+          variant={"outline"}
           onClick={() => {
             nav();
           }}

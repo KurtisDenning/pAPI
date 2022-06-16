@@ -4,7 +4,7 @@ const Nav = () => {
   return (
     <Box mx={"50px"} h={"10vh"}>
       <Flex h={"100%"}>
-        <Heading fontSize={["2rem", "3rem"]} mt={"auto"}>
+        <Heading fontSize={["2rem", "3rem"]} mt={"auto"} color={"#222222"}>
           pApi
         </Heading>
       </Flex>

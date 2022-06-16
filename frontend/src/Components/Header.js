@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-scroll";
 import { React } from "react";
+import '../theme/styles.css'
 
 const Header = ({ query, setQuery }) => {
   return (
@@ -19,10 +20,13 @@ const Header = ({ query, setQuery }) => {
         <Flex h={"80%"} alignItems={"center"} justifyContent={"center"}>
           <VStack spacing={10}>
             <Heading fontSize={["3rem", "3.5rem", "4.5rem", "5.25rem", "8rem"]}>
-              The Modern
-              <br /> API Platform
+              <span id="the">The</span>
+              <span id="modern">Modern</span>
+              <br />
+              <span id="api">API</span>
+              <span id="platform">Platform</span>
             </Heading>
-            <Text fontSize={["1rem", "1.25rem", "1.5rem"]}>Find, connect to, & manage thousands of API's</Text>
+            <Text fontSize={["1rem", "1.25rem", "1.5rem"]} color={"#222222"}>Find, connect to, & manage thousands of API's</Text>
           </VStack>
         </Flex>
         <Center>
@@ -31,7 +35,7 @@ const Header = ({ query, setQuery }) => {
               fontSize={["1.25rem", "1.5rem"]}
               onChange={(event) => setQuery(event.target.value)}
               isInvalid
-              errorBorderColor="black"
+              errorBorderColor="#222222"
               noOfLines={1}
               placeholder="Search for an API here"
               value={query}
@@ -46,7 +50,10 @@ const Header = ({ query, setQuery }) => {
                 fontSize={["1.25rem", "1.5rem"]}
                 fontWeight="semibold"
                 bg="#ffffff"
-                color="black"
+                _hover={{
+
+                }}
+                color={"#222222"}
               >
                 <Link
                   to="APIs"

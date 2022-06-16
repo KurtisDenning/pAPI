@@ -1,1 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script&family=Work+Sans&display=swap');
+
+#the {
+    color: #F6A9C9;
+    -webkit-text-stroke: 0.1px #222222;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#modern {
+    color: #A3CBC6;
+    -webkit-text-stroke: 0.1px #222222;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#api {
+    color: #CDAFF4;
+    -webkit-text-stroke: 0.1px #222222;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#platform {
+    color: #BCA6A6;
+    -webkit-text-stroke: 0.1px #222222;
+    margin-left: 5px;
+    margin-right: 5px;
+}

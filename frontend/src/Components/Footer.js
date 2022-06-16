@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <Box bg={"#222222"}>
       <Flex h={"33vh"} alignItems={"center"} justifyContent={"center"}>
-        <Heading color={"white"} as={"h2"} size={"2xl"}>
+        <Heading color={"white"} fontSize={["2rem", "3rem"]} >
           pAPI
         </Heading>
       </Flex>

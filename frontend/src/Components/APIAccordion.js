@@ -9,7 +9,6 @@ import {
   AccordionButton,
   AccordionItem,
   AccordionPanel,
-  Heading,
   Center,
 } from "@chakra-ui/react";
 
@@ -44,7 +43,7 @@ function APIAccordion({ item, index, id, isEven }) {
           <AccordionItem>
             <AccordionButton onClick={fetchData}>
               <Box flex="1" textAlign="left">
-                <Text fontSize={["1rem", "1.25rem"]}>
+                <Text fontSize={["1rem", "1.25rem"]} color={"#222222"}>
                   {item.request}
                 </Text>
               </Box>

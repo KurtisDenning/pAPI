@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-  Heading,
   Box,
   Text,
   Spinner,
@@ -94,7 +93,7 @@ function APIPage() {
   } else {
     return (
       <Box minH={"92vh"} my={50} mx={[50, 100, 150]}>
-        <Text fontSize={["1.5rem", "2rem", "3rem", "4rem"]}>
+        <Text fontSize={["1.5rem", "2rem", "3rem", "4rem"]} color={"#222222"}>
           {APIData.title}
         </Text>
 

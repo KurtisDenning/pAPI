@@ -39,7 +39,7 @@ const APIs = ({ query, category, APIData }) => {
 
   return (
     <Box id={"APIs"} my={50} mx={[50, 100, 150]}>
-      <Heading fontSize={["1.5rem", "2rem", "3rem", "4rem"]} mb={"50px"}>
+      <Heading fontSize={["1.5rem", "2rem", "3rem", "4rem"]} mb={"50px"} color={"#222222"}>
         API's
       </Heading>
 
