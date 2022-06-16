@@ -17,7 +17,7 @@ This application connects to various public API's that are available around the 
 - [Go](https://go.dev/) as the core back-end language. Fast, modern, and concurrent programming language.
 - [Gin](https://gin-gonic.com/) as the Go framework. Fully functional web framework that makes routing a breeze.
 - [Redis](https://redis.io/) as an in-memory data store. Leveraged by the Tollbooth middleware to provide a simple rate limiter.
-- [Swagger](https://swagger.io/) used for API documentation and testing, specifically the implementation provided by [Swaggo](https://github.com/swaggo/swag). 
+- [Swagger](https://swagger.io/) used for API documentation and testing, specifically the implementation provided by [Swaggo](https://github.com/swaggo/swag).
 - [Postman](https://www.postman.com/) was used for debugging and testing during development.
 
 ## Security

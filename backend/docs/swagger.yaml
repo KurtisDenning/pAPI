@@ -63,13 +63,9 @@ definitions:
   entity_models.Request:
     properties:
       lastUpdate:
-        type: string
+        type: integer
       request:
         type: string
-      requests:
-        items:
-          $ref: '#/definitions/entity_models.Request'
-        type: array
       response:
         additionalProperties: true
         type: object
@@ -102,25 +98,64 @@ paths:
       summary: Get all API data
       tags:
       - APIData
-  /apidata/{oid}:
+  /apidata/{objectID}/{requestID}:
     get:
-      description: Get complete information about a single API stored in the database
+      description: Get complete information about a single API request stored in the
+        database. Also requset an update to the information if is has been longer
+        than 4 hours since the last update.
       parameters:
-      - description: The Object ID (_id) of the API data
+      - description: The Object ID (_id) of the API data entry
         in: path
-        name: oid
+        name: objectID
         required: true
         type: string
-      - description: The request ID to check for - is recursive in practice
-        in: query
+      - description: The index of the request to get from the requests array in the
+          API data entry
+        in: path
         name: requestID
+        required: true
         type: integer
       produces:
       - application/json
       responses:
         "200":
-          description: Successful request. Please note that requests are recursive,
-            and can have many request layers
+          description: Successful request.
+          schema:
+            $ref: '#/definitions/entity_models.Request'
+        "400":
+          description: Problem with user request - read message for more details
+          schema:
+            $ref: '#/definitions/entity_models.Message'
+        "429":
+          description: Too many requests - please only test once every 10 seconds
+          schema:
+            type: string
+        "500":
+          description: Problem with server processing - read message for more details
+          schema:
+            $ref: '#/definitions/entity_models.Message'
+        "502":
+          description: Problem connecting to external API - read message for more
+            details
+          schema:
+            $ref: '#/definitions/entity_models.Message'
+      summary: Get single API data request
+      tags:
+      - APIDataRequest
+  /apidata/{oid}:
+    get:
+      description: Get complete information about a single API stored in the database
+      parameters:
+      - description: The Object ID (_id) of the API data entry
+        in: path
+        name: oid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful request.
           schema:
             $ref: '#/definitions/entity_models.APIData'
         "400":

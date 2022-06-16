@@ -26,9 +26,8 @@ func GetAPIDatas(ctx *gin.Context) {
 // @Description Get complete information about a single API stored in the database
 // @tags APIData
 // @Produce json
-// @Param oid path string true "The Object ID (_id) of the API data"
-// @Param requestID query int false "The request ID to check for - is recursive in practice"
-// @Success 200 {object} entity_models.APIData "Successful request. Please note that requests are recursive, and can have many request layers"
+// @Param oid path string true "The Object ID (_id) of the API data entry"
+// @Success 200 {object} entity_models.APIData "Successful request."
 // @Failure 400 {object} entity_models.Message "Problem with user request - read message for more details"
 // @Failure 500 {object} entity_models.Message "Problem with server processing - read message for more details"
 // @Failure 502 {object} entity_models.Message "Problem connecting to external API - read message for more details"
@@ -40,6 +39,19 @@ func GetAPIData(ctx *gin.Context) {
 
 }
 
+// GetAPIDataRequest godoc
+// @Summary Get single API data request
+// @Description Get complete information about a single API request stored in the database. Also requset an update to the information if is has been longer than 4 hours since the last update.
+// @tags APIDataRequest
+// @Produce json
+// @Param objectID path string true "The Object ID (_id) of the API data entry"
+// @Param requestID path int true "The index of the request to get from the requests array in the API data entry"
+// @Success 200 {object} entity_models.Request "Successful request."
+// @Failure 400 {object} entity_models.Message "Problem with user request - read message for more details"
+// @Failure 500 {object} entity_models.Message "Problem with server processing - read message for more details"
+// @Failure 502 {object} entity_models.Message "Problem connecting to external API - read message for more details"
+// @Failure 429 {string} string "Too many requests - please only test once every 10 seconds"
+// @Router /apidata/{objectID}/{requestID} [get]
 func GetAPIDataRequest(ctx *gin.Context) {
 	request, err := strconv.Atoi(ctx.Param("request"))
 	if err != nil {
