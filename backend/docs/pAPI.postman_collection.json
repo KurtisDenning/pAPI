@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "0061bf86-e0a4-49e1-97c0-be49729e493d",
+		"name": "pAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18240912"
+	},
+	"item": [
+		{
+			"name": "apidatas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://papi-project.herokuapp.com/api/v1/apidata",
+					"protocol": "https",
+					"host": [
+						"papi-project",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"apidata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "apidata",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://papi-project.herokuapp.com/api/v1/apidata/62959878af9bc4a249786af3",
+					"protocol": "https",
+					"host": [
+						"papi-project",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"apidata",
+						"62959878af9bc4a249786af3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://papi-project.herokuapp.com/api/v1/categories",
+					"protocol": "https",
+					"host": [
+						"papi-project",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://papi-project.herokuapp.com/api/v1/categories/628e0d4a4e3f4f6c8d644a95",
+					"protocol": "https",
+					"host": [
+						"papi-project",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categories",
+						"628e0d4a4e3f4f6c8d644a95"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
