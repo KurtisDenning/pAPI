@@ -113,6 +113,10 @@ This application was developed using [Fyne](https://fyne.io/), a GUI framework f
 
 Currently, the functionality of the application should all be fine, but when making a change to the database, the windows don't automatically refresh with the most up to date information. A change that would improve the quality of life would be implementing the automatic refresh of the window when a change is detected. However, this isn't a necessary feature, since the target user of this application is an administrator, not a customer, and therefore the application doesn't necessarily need a positive user experience, as long as the necessary functionality is there.
 
+## Firewall Considerations
+
+This application directly connects to MongoDB. During development there were issues accessing the database through PEAP protected nectworks, such as Eduroam. If you are having issues connecting, please try and use an external network, such as mobile data. If the error continues persisting, contact the app developer.
+
 ## Tutorial
 
 Step 1 - Download and run the `papiAdmin` application

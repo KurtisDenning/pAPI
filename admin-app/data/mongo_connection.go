@@ -129,7 +129,7 @@ func (m *MongoConnection) UpdateCategory(categoryID primitive.ObjectID, category
 		return err
 	}
 	if result.ModifiedCount != 1 {
-		return errors.New("error: replaced more than one entry")
+		return errors.New("error: a single entry wasn't modified")
 	}
 	return nil
 }
