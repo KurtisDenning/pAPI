@@ -1,11 +1,11 @@
 import { React, useState } from "react";
 import APICard from "./APICards";
-import { Heading, Box } from "@chakra-ui/react";
+import { Heading, Box, SimpleGrid } from "@chakra-ui/react";
 import Pagination from "./Pagination";
 
 const APIs = ({ query, category, APIData }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(3);
+  const [itemsPerPage] = useState(4);
 
   let apiCat = APIData.filter((apiData) => {
     if (category === null) {
@@ -38,18 +38,24 @@ const APIs = ({ query, category, APIData }) => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <Box>
-      <Box id={"APIs"} my={50} mx={[50, 100, 150]}>
-        <Heading as={"h3"} size={"lg"} mb={"50px"}>
-          API's
-        </Heading>
+    <Box id={"APIs"} my={50} mx={[50, 100, 150]}>
+      <Heading as={"h3"} size={"lg"} mb={"50px"}>
+        API's
+      </Heading>
+
+      <SimpleGrid
+        maxW={"100vw"}
+        minChildWidth={"500px"}
+        columns={2}
+        spacing={5}
+      >
         {currentItems}
-        <Pagination
-          itemsPerPage={itemsPerPage}
-          totalPosts={APIData.length}
-          paginate={paginate}
-        />
-      </Box>
+      </SimpleGrid>
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalPosts={APIData.length}
+        paginate={paginate}
+      />
     </Box>
   );
 };

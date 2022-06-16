@@ -15,10 +15,10 @@ import { React } from "react";
 const Header = ({ query, setQuery }) => {
   return (
     <>
-      <Box h={"92vh"} mx={50}>
+      <Box h={"90vh"} mx={50}>
         <Flex h={"80%"} alignItems={"center"} justifyContent={"center"}>
           <VStack spacing={10}>
-            <Heading as={"h1"} size={"3xl"}>
+            <Heading as={"h1"} fontSize={["48px", "64px"]}>
               The Modern
               <br /> API Platform
             </Heading>

@@ -1,10 +1,12 @@
 import React from "react";
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 const Nav = () => {
   return (
-    <Box px={4}>
-      <Flex h={"8vh"} alignItems={"center"}>
-        <Text fontSize={"3xl"}>pApi</Text>
+    <Box mx={"50px"} h={"10vh"}>
+      <Flex h={"100%"}>
+        <Heading mt={"auto"} as={"h2"} size={"2xl"}>
+          pApi
+        </Heading>
       </Flex>
     </Box>
   );

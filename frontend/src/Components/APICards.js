@@ -14,7 +14,7 @@ const APICard = (props) => {
   }
 
   return (
-    <>
+    <Box w={["70vw", null, null, null, "40vw"]}>
       <Box p={5}>
         <Heading as="h4" size="md">
           {props.title}
@@ -32,7 +32,7 @@ const APICard = (props) => {
         </Button>
       </Flex>
       <Divider />
-    </>
+    </Box>
   );
 };
 
