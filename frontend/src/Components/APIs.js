@@ -45,9 +45,7 @@ const APIs = ({ query, category, APIData }) => {
 
       <SimpleGrid
         maxW={"100vw"}
-        minChildWidth={"500px"}
-        columns={2}
-        spacing={5}
+        columns={[1, null, null, 2]}
       >
         {currentItems}
       </SimpleGrid>

@@ -14,7 +14,7 @@ const APICard = (props) => {
   }
 
   return (
-    <Box w={["70vw", null, null, null, "40vw"]}>
+    <Box m={5}>
       <Box p={5}>
         <Heading as="h4" size="md">
           {props.title}
