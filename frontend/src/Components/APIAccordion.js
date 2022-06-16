@@ -44,9 +44,9 @@ function APIAccordion({ item, index, id, isEven }) {
           <AccordionItem>
             <AccordionButton onClick={fetchData}>
               <Box flex="1" textAlign="left">
-                <Heading as={"h3"} size={"md"}>
+                <Text fontSize={["1rem", "1.25rem"]}>
                   {item.request}
-                </Heading>
+                </Text>
               </Box>
               <AccordionIcon />
             </AccordionButton>

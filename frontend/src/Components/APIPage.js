@@ -94,11 +94,11 @@ function APIPage() {
   } else {
     return (
       <Box minH={"92vh"} my={50} mx={[50, 100, 150]}>
-        <Heading as={"h2"} size={"2xl"}>
+        <Text fontSize={["1.5rem", "2rem", "3rem", "4rem"]}>
           {APIData.title}
-        </Heading>
+        </Text>
 
-        <Text mt={5} ml={5} mb={"80px"} fontSize={["md", "md", "lg", "xl"]}>
+        <Text mt={5} ml={5} mb={"80px"} fontSize={["1rem", "1.25rem", "1.5rem"]} color={"gray"}>
           {APIData.description}
         </Text>
 

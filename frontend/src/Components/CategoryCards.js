@@ -12,6 +12,8 @@ const CategoryCards = ({ setCategory, category, item }) => {
 
   return (
     <Button
+      fontSize={["1rem", "1.25rem", "1.5rem"]}
+      size={["lg"]}
       mr={[6, 9, 12]}
       mb={[6, 9, 12]}
       isActive={category === item}

@@ -8,6 +8,8 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import theme from "./theme/index.ts";
+import './theme/styles.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./Components/Nav";
 import Header from "./Components/Header";
@@ -16,11 +18,7 @@ import APIPage from "./Components/APIPage";
 import APIs from "./Components/APIs";
 import Footer from "./Components/Footer";
 import axios from "axios";
-import CategoriesDevJSON from "./DevData/Categories.json";
-import APIDevJSON from "./DevData/APIs.json";
-
 function App() {
-  const isDevelopment = true;
 
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState(null);
@@ -32,42 +30,26 @@ function App() {
 
   // Get category data
   useEffect(() => {
-    if (isDevelopment === false) {
-      const fetchCategoryData = async () => {
-        const res = await axios.get(
-          "https://papi-project.herokuapp.com/api/v1/categories"
-        );
-        setCategoryData(res.data);
-        setCategorysLoading(false);
-      };
-      fetchCategoryData();
-    } else {
-      setTimeout(() => {
-        // Simulates loading times
-        setCategoryData(CategoriesDevJSON);
-        setCategorysLoading(false);
-      }, 3000);
-    }
+    const fetchCategoryData = async () => {
+      const res = await axios.get(
+        "https://papi-project.herokuapp.com/api/v1/categories"
+      );
+      setCategoryData(res.data);
+      setCategorysLoading(false);
+    };
+    fetchCategoryData();
   }, []);
 
   // Get API data
   useEffect(() => {
-    if (isDevelopment === false) {
-      const fetchAPIData = async () => {
-        const res = await axios.get(
-          "https://papi-project.herokuapp.com/api/v1/apidata"
-        );
-        setAPIData(res.data);
-        setAPIsLoading(false);
-      };
-      fetchAPIData();
-    } else {
-      setTimeout(() => {
-        // Simulates loading times
-        setAPIData(APIDevJSON);
-        setAPIsLoading(false);
-      }, 3000);
-    }
+    const fetchAPIData = async () => {
+      const res = await axios.get(
+        "https://papi-project.herokuapp.com/api/v1/apidata"
+      );
+      setAPIData(res.data);
+      setAPIsLoading(false);
+    };
+    fetchAPIData();
   }, []);
 
   useEffect(() => {
@@ -113,14 +95,12 @@ function App() {
             setCategory={setCategory}
             category={category}
             categoryData={categoryData}
-            isDevelopment={isDevelopment}
           />
           <Divider />
           <APIs
             query={query}
             category={category}
             APIData={APIData}
-            isDevelopment={isDevelopment}
           />
         </>
       );
@@ -128,7 +108,7 @@ function App() {
   }
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Nav />
       <Router>
         <Routes>

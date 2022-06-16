@@ -11,7 +11,7 @@ const Pagination = ({ itemsPerPage, totalPosts, paginate }) => {
   return (
     <Box mt={5}>
       {pageNumbers.map((number) => (
-        <Button ml={2} key={number} onClick={() => paginate(number)}>
+        <Button size={"md"} fontSize={["1.25rem", null, "1.5rem"]} ml={2} key={number} onClick={() => paginate(number)}>
           {number}
         </Button>
       ))}

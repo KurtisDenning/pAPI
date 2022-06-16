@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Divider, Text, Heading, Button, Flex } from "@chakra-ui/react";
+import { Box, Divider, Text, Button, Flex } from "@chakra-ui/react";
 
 const APICard = (props) => {
   let navigate = useNavigate();
@@ -16,13 +16,14 @@ const APICard = (props) => {
   return (
     <Box m={5}>
       <Box p={5}>
-        <Heading as="h4" size="md">
+        <Text fontSize={["1.25rem", "1.5rem", "2rem"]}>
           {props.title}
-        </Heading>
-        <Text>{props.description}</Text>
+        </Text>
+        <Text noOfLines={1} fontSize={["1rem", null, "1.25rem"]} color="gray">{props.description}</Text>
       </Box>
       <Flex justify={"end"}>
         <Button
+          fontSize={"1rem"}
           my={5}
           onClick={() => {
             nav();
