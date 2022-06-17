@@ -1,6 +1,7 @@
 {
   "name": "papi",
   "version": "0.1.0",
+  "homepage": "https://oliverschweikert.github.io/pAPI",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.0.0",
@@ -20,6 +21,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b frontend-deployment -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -39,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
