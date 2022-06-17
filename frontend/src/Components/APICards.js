@@ -14,7 +14,7 @@ const APICard = (props) => {
   }
 
   return (
-    <Box m={10}>
+    <Box m={[5, 10]}>
       <Box p={5}>
         <Text fontSize={["1.25rem", "1.5rem", "2rem"]} color={"#222222"}>
           {props.title}

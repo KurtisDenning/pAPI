@@ -68,7 +68,7 @@ function App() {
 
               {showButton && (
                 <>
-                  <Text pt={20} color={"red"}>
+                  <Text textAlign={"center"} pt={20} color={"red"}>
                     This is taking longer than expected...
                   </Text>
                   <Button
@@ -76,9 +76,9 @@ function App() {
                       window.location.reload(false);
                     }}
                   >
-                    <Text>Click here to refresh the page</Text>
+                    <Text textAlign={"center"}>Click here to refresh the page</Text>
                   </Button>
-                  <Text fontSize={"xs"} as={"i"}>
+                  <Text textAlign={"center"} fontSize={"xs"} as={"i"}>
                     If the error persists, please reach out to one of our admins
                     at <b>testing@blabla.com</b> .
                   </Text>
@@ -109,8 +109,8 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Nav />
       <Router>
+        <Nav />
         <Routes>
           <Route
             path="/"
@@ -126,8 +126,8 @@ function App() {
             <Route path=":id" element={<APIPage />} />
           </Route>
         </Routes>
+        <Footer />
       </Router>
-      <Footer />
     </ChakraProvider>
   );
 }

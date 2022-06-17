@@ -13,7 +13,7 @@ import {
   Image
 } from "@chakra-ui/react";
 
-function APIAccordion({ item, index, id, isEven }) {
+function APIAccordion({ item, index, id, remainder }) {
   const [loading, setLoading] = useState(true);
   const [response, setResponse] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -31,11 +31,19 @@ function APIAccordion({ item, index, id, isEven }) {
 
   let accordionBg;
 
-  if (isEven) {
-    accordionBg = "gray.100";
-  } else {
-    accordionBg = "gray.400";
-  }
+  switch (remainder) {
+    case 0:
+      accordionBg = "#F6A9C9";
+      break;
+    case 1:
+      accordionBg = "#A3CBC6";
+      break;
+    case 2:
+      accordionBg = "#CDAFF4"
+      break;
+    default:
+      accordionBg = "#BCA6A6"
+  };
 
   function handleJSON(jsonObject, indent, key) {
     let entries = Object.entries(jsonObject);
@@ -47,7 +55,7 @@ function APIAccordion({ item, index, id, isEven }) {
           if (Array.isArray(item[1])) {
             return (
               <>
-                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}</Text>
+                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}:</Text>
                 {handleArray(item[1], indent + 4, newKey)}
               </>
             )
@@ -55,7 +63,7 @@ function APIAccordion({ item, index, id, isEven }) {
           else {
             return (
               <>
-                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}</Text>
+                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}:</Text>
                 {handleJSON(item[1], indent + 4, newKey)}
               </>
             )
@@ -64,15 +72,24 @@ function APIAccordion({ item, index, id, isEven }) {
           if (itemIsImage(item[1])) {
             return (
               <>
-                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}</Text>
+                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}:</Text>
                 <Image mx={"auto"} maxH={"50vh"} key={`${newKey}itemimage`} src={item[1]} />
                 <Text textAlign={"center"} key={`${newKey}item`}>{item[1]}</Text>
               </>
             )
-          } else {
+          } else if (item[0] === "lastUpdate") {
+            let date = new Date(item[1])
             return (
               <>
-                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}</Text>
+                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}:</Text>
+                <Text key={`${newKey}item`} ml={indent + 4}>{date.toLocaleDateString()}</Text>
+              </>
+            )
+          }
+          else {
+            return (
+              <>
+                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}:</Text>
                 <Text key={`${newKey}item`} ml={indent + 4}>{item[1]}</Text>
               </>
             )
@@ -80,7 +97,7 @@ function APIAccordion({ item, index, id, isEven }) {
       }
     }
     )
-  }
+  };
 
   function itemIsImage(item) {
     let imageSuffixs = [
@@ -96,7 +113,7 @@ function APIAccordion({ item, index, id, isEven }) {
     }
     );
     return hasImg
-  }
+  };
 
   function handleArray(arrayObject, indent, key) {
     return arrayObject.map((item, index) => {
@@ -123,7 +140,7 @@ function APIAccordion({ item, index, id, isEven }) {
           }
       }
     })
-  }
+  };
 
   return (
     <>

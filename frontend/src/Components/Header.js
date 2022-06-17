@@ -19,14 +19,14 @@ const Header = ({ query, setQuery }) => {
       <Box h={"90vh"} mx={50}>
         <Flex h={"80%"} alignItems={"center"} justifyContent={"center"}>
           <VStack spacing={10}>
-            <Heading fontSize={["3rem", "3.5rem", "4.5rem", "5.25rem", "8rem"]}>
+            <Heading fontSize={["4rem", "4.5rem", "5.25rem", "8rem"]}>
               <span id="the">The</span>
               <span id="modern">Modern</span>
               <br />
               <span id="api">API</span>
               <span id="platform">Platform</span>
             </Heading>
-            <Text textAlign={"center"} fontSize={["1rem", "1.25rem", "1.5rem"]} color={"#222222"}>Find, connect to, &amp; manage thousands of API's</Text>
+            <Text textAlign={"center"} fontSize={["1rem", null, "1.25rem", "1.5rem"]} color={"#222222"}>Find, connect to, &amp; manage thousands of API's</Text>
           </VStack>
         </Flex>
         <Center>

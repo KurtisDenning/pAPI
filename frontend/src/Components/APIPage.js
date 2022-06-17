@@ -36,21 +36,17 @@ function APIPage() {
 
   if (!loading) {
     let count = -1;
-    let even = false;
     accordions = requests.map((item) => {
       count++;
-      if (count % 2 === 0) {
-        even = true;
-      } else {
-        even = false;
-      }
+      let remainder = count % 4;
+
       return (
         <APIAccordion
           key={item.request}
           id={id}
           item={item}
           index={count}
-          isEven={even}
+          remainder={remainder}
         />
       );
     });
@@ -70,7 +66,7 @@ function APIPage() {
             <Spinner size={"xl"} />
             {showButton && (
               <>
-                <Text pt={20} color={"red"}>
+                <Text textAlign={"center"} pt={20} color={"red"}>
                   This is taking longer than expected...
                 </Text>
                 <Button
@@ -78,7 +74,7 @@ function APIPage() {
                     window.location.reload(false);
                   }}
                 >
-                  <Text>Click here to refresh the page</Text>
+                  <Text textAlign={"center"}>Click here to refresh the page</Text>
                 </Button>
                 <Text textAlign={"center"} fontSize={"xs"} as={"i"}>
                   If the error persists, please reach out to one of our admins
