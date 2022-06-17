@@ -10,6 +10,7 @@ import {
   AccordionItem,
   AccordionPanel,
   Center,
+  Image
 } from "@chakra-ui/react";
 
 function APIAccordion({ item, index, id, isEven }) {
@@ -36,6 +37,94 @@ function APIAccordion({ item, index, id, isEven }) {
     accordionBg = "gray.400";
   }
 
+  function handleJSON(jsonObject, indent, key) {
+    let entries = Object.entries(jsonObject);
+    return entries.map((item, index) => {
+      let newKey = `${key}${index}${item[0]}`
+      let val = typeof item[1]
+      switch (val) {
+        case "object":
+          if (Array.isArray(item[1])) {
+            return (
+              <>
+                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}</Text>
+                {handleArray(item[1], indent + 4, newKey)}
+              </>
+            )
+          }
+          else {
+            return (
+              <>
+                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}</Text>
+                {handleJSON(item[1], indent + 4, newKey)}
+              </>
+            )
+          }
+        default:
+          if (itemIsImage(item[1])) {
+            return (
+              <>
+                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}</Text>
+                <Image mx={"auto"} maxH={"50vh"} key={`${newKey}itemimage`} src={item[1]} />
+                <Text textAlign={"center"} key={`${newKey}item`}>{item[1]}</Text>
+              </>
+            )
+          } else {
+            return (
+              <>
+                <Text key={newKey} ml={indent} fontWeight={"bold"}>{item[0]}</Text>
+                <Text key={`${newKey}item`} ml={indent + 4}>{item[1]}</Text>
+              </>
+            )
+          }
+      }
+    }
+    )
+  }
+
+  function itemIsImage(item) {
+    let imageSuffixs = [
+      "png",
+      "jpg",
+      "gif"
+    ]
+    let hasImg = false
+    imageSuffixs.forEach(suf => {
+      if (JSON.stringify(item).endsWith(`${suf}"`)) {
+        hasImg = true
+      }
+    }
+    );
+    return hasImg
+  }
+
+  function handleArray(arrayObject, indent, key) {
+    return arrayObject.map((item, index) => {
+      let val = typeof item
+      let newKey = `${key}${index}`
+      switch (val) {
+        case "object":
+          if (Array.isArray(item)) { return handleArray(item, indent + 4, newKey) }
+          else { return handleJSON(item, indent + 4, newKey) }
+        default:
+          if (itemIsImage(item)) {
+            return (
+              <>
+                <Image key={`${newKey}image`} src={item} />
+                <Text key={newKey}>{item}</Text>
+              </>
+            )
+          } else {
+            return (
+              <>
+                <Text key={newKey} ml={indent}>{item}</Text>
+              </>
+            )
+          }
+      }
+    })
+  }
+
   return (
     <>
       <Box bg={accordionBg}>
@@ -59,7 +148,7 @@ function APIAccordion({ item, index, id, isEven }) {
                   </>
                 )}
 
-                {!loading && <Text>{JSON.stringify(response)}</Text>}
+                {!loading && handleJSON(response, 0, "")}
               </Box>
             </AccordionPanel>
           </AccordionItem>

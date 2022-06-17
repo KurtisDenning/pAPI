@@ -80,7 +80,7 @@ function APIPage() {
                 >
                   <Text>Click here to refresh the page</Text>
                 </Button>
-                <Text fontSize={"xs"} as={"i"}>
+                <Text textAlign={"center"} fontSize={"xs"} as={"i"}>
                   If the error persists, please reach out to one of our admins
                   at <b>testing@blabla.com</b> .
                 </Text>

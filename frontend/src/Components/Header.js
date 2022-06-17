@@ -26,7 +26,7 @@ const Header = ({ query, setQuery }) => {
               <span id="api">API</span>
               <span id="platform">Platform</span>
             </Heading>
-            <Text fontSize={["1rem", "1.25rem", "1.5rem"]} color={"#222222"}>Find, connect to, & manage thousands of API's</Text>
+            <Text textAlign={"center"} fontSize={["1rem", "1.25rem", "1.5rem"]} color={"#222222"}>Find, connect to, &amp; manage thousands of API's</Text>
           </VStack>
         </Flex>
         <Center>
