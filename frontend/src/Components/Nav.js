@@ -6,7 +6,7 @@ const Nav = () => {
     <Box mx={"50px"} h={"10vh"}>
       <Flex h={"100%"}>
         <Heading fontSize={["2rem", "3rem"]} mt={"auto"} color={"#222222"}>
-          <Link to={"/"}>pApi</Link>
+          <Link to={"/pAPI"}>pApi</Link>
         </Heading>
       </Flex>
     </Box>

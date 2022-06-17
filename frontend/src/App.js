@@ -113,7 +113,7 @@ function App() {
         <Nav />
         <Routes>
           <Route
-            path="/"
+            path="pAPI"
             element={
               <>
                 <Header query={query} setQuery={setQuery} />

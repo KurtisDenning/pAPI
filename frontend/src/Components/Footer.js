@@ -15,7 +15,7 @@ const Footer = () => {
     <Box bg={"#222222"}>
       <Flex h={"33vh"} alignItems={"center"} justifyContent={"center"}>
         <Heading color={"white"} fontSize={["2rem", "3rem"]} >
-          <Link onClick={scrollToTop} to={"/"}>pApi</Link>
+          <Link onClick={scrollToTop} to={"/pAPI"}>pApi</Link>
         </Heading>
       </Flex>
     </Box>
