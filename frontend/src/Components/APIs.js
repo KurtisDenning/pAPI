@@ -51,8 +51,9 @@ const APIs = ({ query, category, APIData }) => {
       </SimpleGrid>
       <Pagination
         itemsPerPage={itemsPerPage}
-        totalPosts={APIData.length}
+        totalPosts={apiCards.length}
         paginate={paginate}
+        currentPageNumber={currentPage}
       />
     </Box>
   );
