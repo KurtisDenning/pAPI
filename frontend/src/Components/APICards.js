@@ -10,7 +10,9 @@ const APICard = (props) => {
       top: 0,
       behavior: "smooth",
     });
-    navigate(`/api/${props._id}`);
+    setTimeout(() => {
+      navigate(`/api/${props._id}`);
+    }, 1000);
   }
 
   return (
