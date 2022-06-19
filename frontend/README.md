@@ -27,15 +27,7 @@ Our initial prototype did have the functionality that we wanted from a front-end
 
 pAPI was designed and built with a 'Mobile first' approach as there is currently a massive mobile demographic that will only continue to grow with time. Designing for mobile first means that our app not only works great on smaller mobile devices but will also scale to most if not all screen sizes whether they be mobile or not.
 
-Thankfully the Chakra-UI library makes building a scalable app very easy with properties such as
-
-[Breakpoints]: https://chakra-ui.com/docs/styled-system/theming/theme#breakpoints
-
-and components such as
-
-[Grid]: https://chakra-ui.com/docs/components/layout/grid
-
-to make building a scalable app quick and easy.
+Thankfully the Chakra-UI library makes building a scalable app very easy with properties such as [Breakpoints](https://chakra-ui.com/docs/styled-system/theming/theme#breakpoints) and components like [Grid](https://chakra-ui.com/docs/components/layout/grid) to make building a scalable app quick and easy.
 
 With all this in consideration, we decided to go with a very minimalistic design that is comprised of a mostly black and white color scheme which is promoted by an abundance of white space to provide great contrast between text and the background, aiding in the readability and usability of our app.
 
