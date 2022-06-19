@@ -9,7 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import theme from "./theme/index.ts";
-import './theme/styles.css'
+import "./theme/styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./Components/Nav";
 import Header from "./Components/Header";
@@ -19,7 +19,6 @@ import APIs from "./Components/APIs";
 import Footer from "./Components/Footer";
 import axios from "axios";
 function App() {
-
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState(null);
   const [APIData, setAPIData] = useState([]);
@@ -76,7 +75,9 @@ function App() {
                       window.location.reload(false);
                     }}
                   >
-                    <Text textAlign={"center"}>Click here to refresh the page</Text>
+                    <Text textAlign={"center"}>
+                      Click here to refresh the page
+                    </Text>
                   </Button>
                   <Text textAlign={"center"} fontSize={"xs"} as={"i"}>
                     If the error persists, please reach out to one of our admins
@@ -97,11 +98,7 @@ function App() {
             categoryData={categoryData}
           />
           <Divider />
-          <APIs
-            query={query}
-            category={category}
-            APIData={APIData}
-          />
+          <APIs query={query} category={category} APIData={APIData} />
         </>
       );
     }
@@ -122,7 +119,7 @@ function App() {
               </>
             }
           />
-          <Route path="/api">
+          <Route path="/pAPI">
             <Route path=":id" element={<APIPage />} />
           </Route>
         </Routes>
