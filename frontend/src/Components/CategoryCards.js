@@ -11,7 +11,6 @@ const CategoryCards = ({ setCategory, category, item }) => {
   }
 
   return (
-
     <Button
       fontSize={["1rem", "1.25rem", "1.5rem"]}
       size={["lg"]}
@@ -21,16 +20,14 @@ const CategoryCards = ({ setCategory, category, item }) => {
       color={"#2222222"}
       _active={{
         bg: "#222222",
-        color: "#ffffff"
+        color: "#ffffff",
       }}
       isActive={category === item}
       onClick={() => {
         setState();
       }}
     >
-      <Text m={3}>
-        {item.shortDesc}
-      </Text>
+      <Text m={3}>{item.shortDesc}</Text>
     </Button>
   );
 };

@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-scroll";
 import { React } from "react";
-import '../theme/styles.css'
+import "../theme/styles.css";
 
 const Header = ({ query, setQuery }) => {
   return (
@@ -26,13 +26,19 @@ const Header = ({ query, setQuery }) => {
               <span id="api">API</span>
               <span id="platform">Platform</span>
             </Heading>
-            <Text textAlign={"center"} fontSize={["1rem", null, "1.25rem", "1.5rem"]} color={"#222222"}>Find, connect to, &amp; manage thousands of API's</Text>
+            <Text
+              textAlign={"center"}
+              fontSize={["1rem", null, "1.25rem", "1.5rem"]}
+              color={"#222222"}
+            >
+              Find, connect to, &amp; manage thousands of API's
+            </Text>
           </VStack>
         </Flex>
         <Center>
           <InputGroup w={["80vw", "70vw", "60vw", "50vw", "40vw"]}>
             <Input
-              fontSize={["1.25rem", "1.5rem"]}
+              fontSize={["1rem", null, "1.25rem", "1.5rem"]}
               onChange={(event) => setQuery(event.target.value)}
               isInvalid
               errorBorderColor="#222222"
@@ -41,30 +47,30 @@ const Header = ({ query, setQuery }) => {
               value={query}
             ></Input>
 
-            <InputRightElement>
-              <Box
-                mr={5}
-                as="button"
-                border="0px"
-                borderRadius="2px"
-                fontSize={["1.25rem", "1.5rem"]}
-                fontWeight="semibold"
-                bg="#ffffff"
-                _hover={{
-
-                }}
-                color={"#222222"}
+            <InputRightElement mr={"1px"} w={"auto"} my={"auto"}>
+              <Link
+                to="APIs"
+                spy={true}
+                smooth={true}
+                offset={-50}
+                duration={500}
               >
-                <Link
-                  to="APIs"
-                  spy={true}
-                  smooth={true}
-                  offset={-50}
-                  duration={500}
+                <Box
+                  px={[1, 2, 3, 4, 5]}
+                  py={["7px", null, "4px", "1px"]}
+                  borderEndRadius={"5px"}
+                  as="button"
+                  fontSize={["1rem", null, "1.25rem", "1.5rem"]}
+                  bg="#ffffff"
+                  color={"#222222"}
+                  _hover={{
+                    bg: "#222222",
+                    color: "#ffffff",
+                  }}
                 >
-                  &#62;
-                </Link>
-              </Box>
+                  Search
+                </Box>
+              </Link>
             </InputRightElement>
           </InputGroup>
         </Center>
