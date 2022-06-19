@@ -38,7 +38,7 @@ function APIPage() {
     let count = -1;
     accordions = requests.map((item) => {
       count++;
-      let remainder = count % 4;
+      let remainder = count % 2;
 
       return (
         <APIAccordion
@@ -74,7 +74,9 @@ function APIPage() {
                     window.location.reload(false);
                   }}
                 >
-                  <Text textAlign={"center"}>Click here to refresh the page</Text>
+                  <Text textAlign={"center"}>
+                    Click here to refresh the page
+                  </Text>
                 </Button>
                 <Text textAlign={"center"} fontSize={"xs"} as={"i"}>
                   If the error persists, please reach out to one of our admins
@@ -93,7 +95,13 @@ function APIPage() {
           {APIData.title}
         </Text>
 
-        <Text mt={5} ml={5} mb={"80px"} fontSize={["1rem", "1.25rem", "1.5rem"]} color={"gray"}>
+        <Text
+          mt={5}
+          ml={5}
+          mb={"80px"}
+          fontSize={["1rem", "1.25rem", "1.5rem"]}
+          color={"gray"}
+        >
           {APIData.description}
         </Text>
 
