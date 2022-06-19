@@ -6,11 +6,11 @@ const APICard = (props) => {
   let navigate = useNavigate();
 
   function nav() {
-    navigate(`/api/${props._id}`);
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+    navigate(`/api/${props._id}`);
   }
 
   return (
@@ -19,7 +19,9 @@ const APICard = (props) => {
         <Text fontSize={["1.25rem", "1.5rem", "2rem"]} color={"#222222"}>
           {props.title}
         </Text>
-        <Text noOfLines={1} fontSize={["1rem", null, "1.25rem"]} color="gray">{props.description}</Text>
+        <Text noOfLines={1} fontSize={["1rem", null, "1.25rem"]} color="gray">
+          {props.description}
+        </Text>
       </Box>
       <Flex justify={"end"}>
         <Button
