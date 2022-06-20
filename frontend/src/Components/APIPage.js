@@ -80,7 +80,7 @@ function APIPage() {
                 </Button>
                 <Text textAlign={"center"} fontSize={"xs"} as={"i"}>
                   If the error persists, please reach out to one of our admins
-                  at <b>testing@blabla.com</b> .
+                  at <b>2020000230@student.sit.ac.nz</b> .
                 </Text>
               </>
             )}
@@ -98,11 +98,20 @@ function APIPage() {
         <Text
           mt={5}
           ml={5}
-          mb={"80px"}
           fontSize={["1rem", "1.25rem", "1.5rem"]}
           color={"gray"}
         >
           {APIData.description}
+        </Text>
+
+        <Text
+          mb={"80px"}
+          mt={5}
+          ml={5}
+          fontSize={["1rem", "1.25rem"]}
+          color={"gray"}
+        >
+          {APIData.base}
         </Text>
 
         {accordions}

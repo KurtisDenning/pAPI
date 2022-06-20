@@ -37,22 +37,6 @@ function APIAccordion({ item, index, id, remainder }) {
     accordionBg = "white";
   }
 
-  // switch (remainder) {
-  //   case 0:
-  //     // accordionBg = "#F6A9C9";
-  //     accordionBg = "gray.300";
-  //     break;
-  //   case 1:
-  //     // accordionBg = "#A3CBC6";
-  //     break;
-  //   case 2:
-  //     // accordionBg = "#CDAFF4"
-  //     break;
-  //   default:
-  //     accordionBg = "gray.400";
-  //   // accordionBg = "#BCA6A6"
-  // }
-
   function handleJSON(jsonObject, indent, key) {
     let entries = Object.entries(jsonObject);
     return entries.map((item, index) => {

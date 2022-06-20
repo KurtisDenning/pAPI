@@ -81,7 +81,7 @@ function App() {
                   </Button>
                   <Text textAlign={"center"} fontSize={"xs"} as={"i"}>
                     If the error persists, please reach out to one of our admins
-                    at <b>testing@blabla.com</b> .
+                    at <b>2020000230@student.sit.ac.nz</b> .
                   </Text>
                 </>
               )}
