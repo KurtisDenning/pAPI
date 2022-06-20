@@ -8,7 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import theme from "./theme/index.ts";
+import theme from "./theme/index.js";
 import "./theme/styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./Components/Nav";
