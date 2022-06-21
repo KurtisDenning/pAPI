@@ -1,0 +1,39 @@
+{
+    "_id": {
+        "$oid": "6295cfb73652deb9e3c06d0b"
+    },
+    "title": "Anime Quotes",
+    "description": "So inspire. Much wow.",
+    "externalURL": "https://animechan.vercel.app/",
+    "dailyCount": {
+        "$numberInt": "0"
+    },
+    "weeklyCount": {
+        "$numberInt": "0"
+    },
+    "monthlyCount": {
+        "$numberInt": "0"
+    },
+    "yearlyCount": {
+        "$numberInt": "0"
+    },
+    "totalCount": {
+        "$numberInt": "0"
+    },
+    "categories": [
+        "628e0d4a4e3f4f6c8d644a95"
+    ],
+    "base": "https://animechan.vercel.app/api/",
+    "requests": [
+        {
+            "request": "random",
+            "response": {},
+            "lastUpdate": "2022-05-25T11:23:00Z"
+        },
+        {
+            "request": "quotes",
+            "response": {},
+            "lastUpdate": "2022-05-25T11:23:00Z"
+        }
+    ]
+}

@@ -1,0 +1,418 @@
+{
+    "_id": {
+        "$oid": "62959878af9bc4a249786af3"
+    },
+    "title": "Waifu Pics",
+    "description": "Cute anime girls uwu",
+    "externalURL": "https://waifu.pics/",
+    "dailyCount": {
+        "$numberInt": "0"
+    },
+    "weeklyCount": {
+        "$numberInt": "0"
+    },
+    "monthlyCount": {
+        "$numberInt": "0"
+    },
+    "yearlyCount": {
+        "$numberInt": "0"
+    },
+    "totalCount": {
+        "$numberInt": "0"
+    },
+    "categories": [
+        "628e0d6a4e3f4f6c8d644a96",
+        "628e0d4a4e3f4f6c8d644a95"
+    ],
+    "requests": [
+        {
+            "request": "",
+            "requests": [
+                {
+                    "request": "sfw/",
+                    "requests": [
+                        {
+                            "request": "yeet",
+                            "response": {
+                                "url": "https://i.waifu.pics/9CeCIw4.gif"
+                            },
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "waifu",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "neko",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "shinobu",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "megumin",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "bully",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "cuddle",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "cry",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "hug",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "awoo",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "kiss",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "lick",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "pat",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "smug",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "bonk",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "blush",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "smile",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "wave",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "highfive",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "handhold",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "nom",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "bite",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "slap",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "kill",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "kick",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "happy",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "wink",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "poke",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "dance",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "cringe",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "glomp",
+                            "response": {
+                                "url": "https://i.waifu.pics/BtF6Yv7.gif"
+                            },
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        }
+                    ]
+                },
+                {
+                    "request": "nsfw/",
+                    "requests": [
+                        {
+                            "request": "waifu",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "neko",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "trap",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "blowjob",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "request": "many/",
+            "requests": [
+                {
+                    "request": "sfw/",
+                    "requests": [
+                        {
+                            "request": "yeet",
+                            "response": {
+                                "url": "https://i.waifu.pics/9CeCIw4.gif"
+                            },
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "waifu",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "neko",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "shinobu",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "megumin",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "bully",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "cuddle",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "cry",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "hug",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "awoo",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "kiss",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "lick",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "pat",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "smug",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "bonk",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "blush",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "smile",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "wave",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "highfive",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "handhold",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "nom",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "bite",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "slap",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "kill",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "kick",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "happy",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "wink",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "poke",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "dance",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "cringe",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "glomp",
+                            "response": {
+                                "url": "https://i.waifu.pics/BtF6Yv7.gif"
+                            },
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        }
+                    ]
+                },
+                {
+                    "request": "nsfw/",
+                    "requests": [
+                        {
+                            "request": "waifu",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "neko",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "trap",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        },
+                        {
+                            "request": "blowjob",
+                            "response": {},
+                            "lastUpdate": "2022-05-25T11:23:00Z"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "base": "https://api.waifu.pics/"
+}
