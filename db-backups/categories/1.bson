@@ -1,0 +1,8 @@
+{
+    "_id": {
+        "$oid": "628e0d4a4e3f4f6c8d644a95"
+    },
+    "name": "anime",
+    "shortDesc": "Anime",
+    "longDesc": "Are you feeling kawaii?"
+}

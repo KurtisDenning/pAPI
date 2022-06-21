@@ -1,0 +1,104 @@
+{
+    "_id": {
+        "$oid": "6295cfb73652deb9e3c06d0b"
+    },
+    "title": "Anime Quotes",
+    "description": "So inspire. Much wow.",
+    "externalURL": "https://animechan.vercel.app/",
+    "dailyCount": {
+        "$numberInt": "0"
+    },
+    "weeklyCount": {
+        "$numberInt": "0"
+    },
+    "monthlyCount": {
+        "$numberInt": "0"
+    },
+    "yearlyCount": {
+        "$numberInt": "0"
+    },
+    "totalCount": {
+        "$numberInt": "0"
+    },
+    "categories": [
+        "628e0d4a4e3f4f6c8d644a95"
+    ],
+    "base": "https://animechan.vercel.app/api/",
+    "requests": [
+        {
+            "request": "random",
+            "response": {
+                "anime": "Gate: Jieitai Kanochi nite Kaku Tatakaeri",
+                "character": "Rory Mercury",
+                "quote": "To a girl, a man who’s nice to everyone... hm, I suppose that works as an example, to a man, it would be like a woman who opens her legs to anyone. People want companions so they can swiftly satisfy their need for love and affection. A woman wants a man who only shows his love to her."
+            },
+            "lastUpdate": {
+                "$date": {
+                    "$numberLong": "1655272515458"
+                }
+            }
+        },
+        {
+            "request": "quotes",
+            "response": {
+                "data": [
+                    {
+                        "anime": "Avatar: The Last Airbender",
+                        "character": "Katara",
+                        "quote": "You make a fine octopus, Pupil Aang."
+                    },
+                    {
+                        "character": "Monkey D. Luffy",
+                        "quote": "If I get reincarnated... I wanna become a clam.",
+                        "anime": "One Piece"
+                    },
+                    {
+                        "quote": "Nobody preaching about justice is ever a good guy.",
+                        "anime": "Dragon Ball Z",
+                        "character": "Beerus"
+                    },
+                    {
+                        "anime": "Soul Eater",
+                        "character": "Medusa Gorgon",
+                        "quote": "You don't feel as good on my foot now, change yourself back into a frog."
+                    },
+                    {
+                        "quote": "I'm not eating early. In my country, we always ate hot dogs during class.",
+                        "anime": "Gintama",
+                        "character": "Kagura"
+                    },
+                    {
+                        "anime": "Gintama",
+                        "character": "Sarutobi Ayame",
+                        "quote": "It's as if you are stuck in some predetermined program, following some predetermined script. If you really want to live in reality, then fight against it. Break through destiny with your own hands, and build your own reality!"
+                    },
+                    {
+                        "character": "Black Star",
+                        "quote": "I am the great assassin Black Star! And I've come here to assassinate you all!",
+                        "anime": "Soul Eater"
+                    },
+                    {
+                        "anime": "CLANNAD",
+                        "character": "Yoshino Yūsuke",
+                        "quote": "Keep on living your life in such a way that love doesn't fade away. I shall work... so that love may shine brightly, even today."
+                    },
+                    {
+                        "quote": "My mother told me something long ago. She said “The world belongs to you just as much as you belong to the world”. For you were born and that gives you the right to exist.",
+                        "anime": "Mobile Suit Gundam Seed",
+                        "character": "Lacus Clyne"
+                    },
+                    {
+                        "character": "Daisuke Aramaki",
+                        "quote": "There has never been a report about a stomach ache or any other related medical trauma from swallowing your pride.",
+                        "anime": "Ghost in the Shell"
+                    }
+                ]
+            },
+            "lastUpdate": {
+                "$date": {
+                    "$numberLong": "1655183717946"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,334 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "A public API that brings together the data from many other API's and makes them publicly accessible.",
+        "title": "pAPI",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "papi-project.herokuapp.com",
+    "basePath": "/api/v1",
+    "paths": {
+        "/apidata": {
+            "get": {
+                "description": "Get a list of all API's that are currently stored in the database, and an overview of their information",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "APIData"
+                ],
+                "summary": "Get all API data",
+                "responses": {
+                    "200": {
+                        "description": "Successful request.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity_models.APIDataOverview"
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too many requests - please only test once every 10 seconds",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/apidata/{objectID}/{requestID}": {
+            "get": {
+                "description": "Get complete information about a single API request stored in the database. Also requset an update to the information if is has been longer than 4 hours since the last update.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "APIDataRequest"
+                ],
+                "summary": "Get single API data request",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The Object ID (_id) of the API data entry",
+                        "name": "objectID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The index of the request to get from the requests array in the API data entry",
+                        "name": "requestID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request.",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Request"
+                        }
+                    },
+                    "400": {
+                        "description": "Problem with user request - read message for more details",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    },
+                    "429": {
+                        "description": "Too many requests - please only test once every 10 seconds",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Problem with server processing - read message for more details",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    },
+                    "502": {
+                        "description": "Problem connecting to external API - read message for more details",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    }
+                }
+            }
+        },
+        "/apidata/{oid}": {
+            "get": {
+                "description": "Get complete information about a single API stored in the database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "APIData"
+                ],
+                "summary": "Get single API data",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The Object ID (_id) of the API data entry",
+                        "name": "oid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request.",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.APIData"
+                        }
+                    },
+                    "400": {
+                        "description": "Problem with user request - read message for more details",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    },
+                    "429": {
+                        "description": "Too many requests - please only test once every 10 seconds",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Problem with server processing - read message for more details",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    },
+                    "502": {
+                        "description": "Problem connecting to external API - read message for more details",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "description": "Get a list of all categories that are currently stored in the database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get all categories",
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity_models.Category"
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too many requests - please only test once every 10 seconds",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{oid}": {
+            "get": {
+                "description": "Get a single category from the database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get a category",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The Object ID (_id) of the category",
+                        "name": "oid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Category"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid object ID",
+                        "schema": {
+                            "$ref": "#/definitions/entity_models.Message"
+                        }
+                    },
+                    "429": {
+                        "description": "Too many requests - please only test once every 10 seconds",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "entity_models.APIData": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "base": {
+                    "type": "string"
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "dailyCount": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "externalURL": {
+                    "type": "string"
+                },
+                "monthlyCount": {
+                    "type": "integer"
+                },
+                "requests": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/entity_models.Request"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "totalCount": {
+                    "type": "integer"
+                },
+                "weeklyCount": {
+                    "type": "integer"
+                },
+                "yearlyCount": {
+                    "type": "integer"
+                }
+            }
+        },
+        "entity_models.APIDataOverview": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity_models.Category": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "longDesc": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "shortDesc": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity_models.Message": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity_models.Request": {
+            "type": "object",
+            "properties": {
+                "lastUpdate": {
+                    "type": "integer"
+                },
+                "request": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            }
+        }
+    }
+}
