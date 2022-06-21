@@ -110,7 +110,7 @@ function APIAccordion({ item, index, id, remainder }) {
   }
 
   function itemIsImage(item) {
-    let imageSuffixs = ["png", "jpg", "gif"];
+    let imageSuffixs = ["png", "jpg", "gif", "jpeg"];
     let hasImg = false;
     imageSuffixs.forEach((suf) => {
       if (JSON.stringify(item).endsWith(`${suf}"`)) {

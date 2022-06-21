@@ -2,8 +2,6 @@
 
 The purpose of the pAPI front-end is to provide a modern, user friendly interface to sort and display the information being stored in the back-end.
 
-
-
 ## Technologies
 
 - React
@@ -11,19 +9,15 @@ The purpose of the pAPI front-end is to provide a modern, user friendly interfac
 - Chakra-UI
 - Npm
 
-
-
 ## Design
+
+[Figma](https://https://www.figma.com/) was used to disign our front-end application which can be found [here](https://www.figma.com/file/jvhjc2HCBYN8FFp2c0OEwT/pAPI?node-id=0%3A1).
 
 ### UI
 
-Firstly here is a link to our Figma file that contains our first prototype design as well as the design that we actually ended up developing:
+There were some careful design choices we took into consideration while designing the user interface such as its overall aesthetic, readability as well as how well it would scale when viewed across a wide range of devices.
 
-[Design Files]: https://www.figma.com/file/jvhjc2HCBYN8FFp2c0OEwT/pAPI?node-id=0%3A1
-
-There were some careful design choices we took into consideration while designing the user interface such as its overall aesthetic, its readability as well as how it would scale when viewed across a wide range of devices.
-
-Our initial prototype did have the functionality that we wanted from a front-end point of view but did not meet our standards from an aesthetic and usability stand point so a redesign was required. The original design as well as our production design are both included in the Figma file link above.
+Our initial prototype did have the functionality that we wanted from a front-end point of view but did not meet our standards from an aesthetic and usability stand point so a redesign was required. The original design as well as our redesign are both included in the Figma [file](https://https://www.figma.com/file/jvhjc2HCBYN8FFp2c0OEwT/pAPI?node-id=0%3A1).
 
 pAPI was designed and built with a 'Mobile first' approach as there is currently a massive mobile demographic that will only continue to grow with time. Designing for mobile first means that our app not only works great on smaller mobile devices but will also scale to most if not all screen sizes whether they be mobile or not.
 
@@ -45,7 +39,20 @@ Some of our UX features we integrated into our app were:
 
 - Animations.
   - Some subtle animations are used throughout pAPI such as some scrolling animations as well as some loading animations which really add to the QOL of pAPI.
+  
 - Large UI elements
   - As talked about in the UI section, mobile has become a very large demographic of users so to accommodate those using smaller touch screens such as phones, we increased the size of all our functional UI elements such as buttons and links.
 
 These features along with our simplistic design make the usability and speed of our app exceptional.
+
+## Scalability
+
+## Testing
+
+Making sure that pAPI fuctions as intended on as many devices as possible with minimal bugs was extremely important for us.
+
+## Deployment
+
+Currently our app is hosted on GitHub pages and can be viewed [here](https://oliverschweikert.github.io/pAPI).
+
+For a real world deployment we would look into hosting the front-end component of our app on some reputable cloud hosting service such as Azure or AWS.
