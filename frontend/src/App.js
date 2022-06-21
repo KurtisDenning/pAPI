@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import theme from "./theme/index.js";
 import "./theme/styles.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./Components/Nav";
 import Header from "./Components/Header";
 import Categories from "./Components/Categories";
@@ -110,7 +110,6 @@ function App() {
         <Nav />
         <Routes>
           <Route
-            exact
             path="/pAPI"
             element={
               <>
@@ -120,19 +119,9 @@ function App() {
               </>
             }
           />
-          <Route exact path="/pAPI/API">
+          <Route path="/pAPI/API">
             <Route path=":id" element={<APIPage />} />
           </Route>
-          <Route
-            path="/pAPI*"
-            element={
-              <>
-                <Header query={query} setQuery={setQuery} />
-                <Divider />
-                {isLoading()}
-              </>
-            }
-          />
         </Routes>
         <Footer />
       </Router>
