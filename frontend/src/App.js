@@ -110,6 +110,7 @@ function App() {
         <Nav />
         <Routes>
           <Route
+            exact
             path="/pAPI"
             element={
               <>
@@ -119,11 +120,11 @@ function App() {
               </>
             }
           />
-          <Route path="/pAPI/API">
+          <Route exact path="/pAPI/API">
             <Route path=":id" element={<APIPage />} />
           </Route>
           <Route
-            path="*"
+            path="/pAPI*"
             element={
               <>
                 <Header query={query} setQuery={setQuery} />
