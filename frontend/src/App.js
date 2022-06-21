@@ -119,7 +119,7 @@ function App() {
               </>
             }
           />
-          <Route path="/pAPI">
+          <Route path="pAPI/APIs">
             <Route path=":id" element={<APIPage />} />
           </Route>
         </Routes>
