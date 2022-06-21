@@ -8,7 +8,9 @@ import {
   Flex,
   VStack,
   Button,
+  Link,
 } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import APIAccordion from "./APIAccordion";
 
@@ -104,13 +106,19 @@ function APIPage() {
           {APIData.description}
         </Text>
 
-        <Text
-          mb={"80px"}
-          mt={5}
-          ml={5}
-          fontSize={["1rem", "1.25rem"]}
-          color={"gray"}
-        >
+        <Box mb={"80px"} ml={5}>
+          <Link
+            as={"i"}
+            color={"gray"}
+            fontSize={["1rem", "1.25rem"]}
+            href={APIData.externalURL}
+            isExternal
+          >
+            Documentation <ExternalLinkIcon mx="2px" />
+          </Link>
+        </Box>
+
+        <Text mb={5} fontSize={["1rem", "1.25rem"]} color={"gray"}>
           {APIData.base}
         </Text>
 
