@@ -108,13 +108,12 @@ function APIPage() {
 
         <Box mb={"80px"} ml={5}>
           <Link
-            as={"i"}
             color={"gray"}
             fontSize={["1rem", "1.25rem"]}
             href={APIData.externalURL}
             isExternal
           >
-            Documentation <ExternalLinkIcon mx="2px" />
+            <em>Documentation</em> <ExternalLinkIcon mx="2px" />
           </Link>
         </Box>
 
