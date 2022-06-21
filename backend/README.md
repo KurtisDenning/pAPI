@@ -42,6 +42,17 @@ Due to the scope of the application being quite small, white-box tests have been
 
 For black-box testing, a combination of Postman and Swagger was used. Swagger tests utilise the OpenAPI standard to check whether a HTTP code and body response matches what is expected. For Postman, custom requests can be made to check a response, with detailed information such as Headers and Authorization information. Custom tests can be written in Javascript if required. Visit our [application](https://papi-project.herokuapp.com) to see our Swagger UI at work. Alternatively, download `pAPI.postman_collection.js` from our [docs](docs) and import it into your own local Postman application to easily view the endpoints there instead.
 
+### Swagger Usage
+
+Following is a basic tutorial for how to use Swagger for testing the endpoints. Feel free to explore.
+
+1. Navigate to [https://papi-project.herokuapp.com](https://papi-project.herokuapp.com). ![pAPI backend landing page](docs/backendReadmeImages/1.png)
+2. Expand one of the available requests (Example: /apidata). ![Expand API Data](/backend/docs/backendReadmeImages/2.png)
+3. Click `Try it out`. ![Try it out](docs/backendReadmeImages/3.png)
+4. If the request requires parameters, be sure to enter something appropriate. ![Parameters](docs/backendReadmeImages/6.png)
+5. Click `Execute`. ![Execute](docs/backendReadmeImages/4.png)
+6. Compare the server response with the expected response. If the format matches, you can consider it a successful test. ![Responses](dpcs/../docs/backendReadmeImages/5.png)
+
 ## Future Considerations
 
 Following are some possible enhancements that can be made to the application in future releases.
