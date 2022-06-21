@@ -1,4 +1,7 @@
-# pAPI - The Public API formatter that nobody asked for!
+# pAPI
 
-### Todo
-- Have a meeting @ 11.30
+The public API formatter nobody asked for!
+
+## Notes
+
+- [Papi Backend](https://github.com/oliverschweikert/pAPI/tree/backendv1-dev/backend)
