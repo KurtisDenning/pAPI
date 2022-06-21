@@ -11,7 +11,7 @@ const APICard = (props) => {
       behavior: "smooth",
     });
     setTimeout(() => {
-      navigate(`/pAPI/APIs/${props._id}`);
+      navigate(`/pAPI/API/${props._id}`);
     }, 800);
   }
 
