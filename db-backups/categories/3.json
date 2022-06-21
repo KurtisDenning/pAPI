@@ -1,0 +1,8 @@
+{
+    "_id": {
+        "$oid": "6295da283652deb9e3c06d0e"
+    },
+    "name": "animals",
+    "shortDesc": "Animals",
+    "longDesc": "Scales, fur, and feathers :)"
+}
