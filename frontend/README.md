@@ -47,15 +47,13 @@ These features along with our simplistic design make the usability and speed of 
 
 ## Scalability
 
-Since we are offering an admin app to developers so that they can easily add their API's to pAPI, it is crucial that our front-end can handle as much data as thrown at it.
-
-Some features added to achieve this were:
+Due to the fact that pAPI is handling many API's, it was crucial that the front-end application would scale to as much data that is thrown at it. Even though we may only have a few API's now, in the future there could be thousands. Because of this, here are some features we incorperated:
 
 - Pagination.
   - On the home page where the API's are being displayed, if the data is not filtered there is likely many items being displayed so it is important to have pagination to restrict how much data is displayed at one time.
   
 - Logic to handle a variety different API data
-  - With so many different unique API's, not all the data is formatted the same and some may even have images that need to be displayed. This is where that front-end logic comes into play, ensuring all data being displayed looks as best as it can.
+  - Not all the data we receive is formatted the, some may even have images that need to be displayed. This is where that front-end logic comes into play, ensuring all data being displayed looks as best as it can.
 
 ## Testing
 
@@ -68,3 +66,11 @@ This ensures that each individual component is working as intended, and behaves 
 Currently our app is hosted on GitHub pages and can be viewed [here](https://oliverschweikert.github.io/pAPI).
 
 For a real world deployment we would look into hosting the front-end component of our app on some reputable cloud hosting service such as Azure or AWS.
+
+## Future considerations
+
+The biggest consideration would definantly be hosting the front-end somewhere more professional such as AWS or Azure with its own domain name.
+
+Some code snippets that are written for popular languages for each API would be something I think would be very beneficial to the user, especially newer developers who aren't as familiar to implementing API's into their projects yet.
+
+General QOL design improvements such as the ones found in our [Figma](https://www.figma.com/file/jvhjc2HCBYN8FFp2c0OEwT/pAPI?node-id=0%3A1) file would have been nice to intergrate with more development time avaliable.
