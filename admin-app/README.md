@@ -161,43 +161,46 @@ Please note that the hex value must match the hex value of a category stored in 
 Steps to add a new API Data:
 
 1. Click `New API Data`.
+
     ![New API Data](docs/images/walkthrough20.png)
-
 2. Enter some API data and click submit.
+
     ![Submit](docs/images/walkthrough21.png)
-
 3. If successful, click `Ok`.
-    ![Success](docs/images/walkthrough22.png)
 
+    ![Success](docs/images/walkthrough22.png)
 4. Close the `API Data` window and reopen it to see updated data.
+
     ![Update](docs/images/walkthrough23.png)
 
 Steps to add a new request:
 
 1. Expand a set of API data, click `Requests` and then `Add request`.
+
     ![Add Request](docs/images/walkthrough24.png)
-
 2. Enter the sub-url to add on to the base URL, and click `Add`.
+
     ![Add](docs/images/walkthrough25.png)
-
 3. Is successful, click `Ok` on the dialog
-    ![Ok](docs/images/walkthrough26.png)
 
+    ![Ok](docs/images/walkthrough26.png)
 4. Close the `API Data` window and reopen it to refresh the data.
+
    ![Refresh](docs/images/walkthrough27.png)
 
 Steps to add a new category:
 
 1. Expand a set of API data, click `Categories` and then `Add category`.
+
     ![Add Category](docs/images/walkthrough28.png)
-
 2. Enter hex of a category, and click `Add`.
+
     ![Add](docs/images/walkthrough29.png)
-
 3. Is successful, click `Ok` on the dialog
-    ![Ok](docs/images/walkthrough30.png)
 
+    ![Ok](docs/images/walkthrough30.png)
 4. Close the `API Data` window and reopen it to refresh the data.
+
    ![Refresh](docs/images/walkthrough31.png)
 
 #### **Read API Data**
@@ -214,7 +217,7 @@ All API data is displayed as accordion items in the `API Data` window. The field
 
 To see all the information, just open up all the accordions:
 
-![Read](docs/images/walkthrough32.png)
+    ![Read](docs/images/walkthrough32.png)
 
 #### **Update API Data**
 
@@ -225,9 +228,10 @@ The API data displayed in the `API Data` window are data entry fields. These can
 Steps to perform an update on APIData:
 
 1. Modify one of the detail fields and click `Update`. Note that you cannot modify a `request` or a `category`, you will need to delete it and add a new one.
-   ![Modify details](docs/images/walkthrough33.png)
 
+   ![Modify details](docs/images/walkthrough33.png)
 2. If successful, press `Ok` on the dialog.
+
    ![Update](docs/images/walkthrough34.png)
 
 #### **Delete API Data**
@@ -239,15 +243,16 @@ A set of API data can be removed by pressing the `Delete` button inside an API D
 The steps to delete API data are:
 
 1. Push the delete button within the details.
+
     ![Delete API data](docs/images/walkthrough37.png)
-
 2. Press `Yes` to confirm deletion.
+
     ![Confirm](docs/images/walkthrough38.png)
-
 3. If successful, press `Ok` on the dialog to automatically close the API data.
-    ![Ok](docs/images/walkthrough39.png)
 
+    ![Ok](docs/images/walkthrough39.png)
 4. Reopen the window to view the updated data
+
    ![Reopen](docs/images/walkthrough40.png)
 
 To delete an API category, press `Remove` on the category, press `Delete` to confirm, and then close and reopen the API data window to view the updated data.
